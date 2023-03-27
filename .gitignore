@@ -67,3 +67,4 @@ crashlytics-build.properties
 /_Build
 /Assets/StreamingAssets/PlayerLog
 /.vsconfig
+/.idea
