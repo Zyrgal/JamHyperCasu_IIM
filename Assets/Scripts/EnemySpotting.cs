@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnnemieSpotting : MonoBehaviour
+public class EnemySpotting : MonoBehaviour
 {
     [SerializeField]
-    float waitToTurn = 3f;
+    float waitForTurn = 3f;
 
     [SerializeField]
     float turnTimer = 1f;
@@ -20,7 +20,7 @@ public class EnnemieSpotting : MonoBehaviour
 
     private IEnumerator TurningBehaviour()
     {
-        yield return new WaitForSeconds(waitToTurn);
+        yield return new WaitForSeconds(waitForTurn);
 
         player.CheckIfPlayerDie();
 
