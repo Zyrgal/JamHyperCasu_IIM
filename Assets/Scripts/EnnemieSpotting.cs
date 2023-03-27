@@ -13,6 +13,9 @@ public class EnnemieSpotting : MonoBehaviour
     [SerializeField]
     InputPlayer player;
 
+    [SerializeField]
+    bool canKill = true;
+
     private void Start()
     {
         StartCoroutine(TurningBehaviour());
@@ -22,7 +25,10 @@ public class EnnemieSpotting : MonoBehaviour
     {
         yield return new WaitForSeconds(waitToTurn);
 
-        player.CheckIfPlayerDie();
+        if (canKill)
+        {
+            player.CheckIfPlayerDie();
+        }
 
         yield return new WaitForSeconds(turnTimer);
 

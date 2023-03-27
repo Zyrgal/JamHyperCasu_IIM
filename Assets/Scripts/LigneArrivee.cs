@@ -1,14 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LigneArrivee : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+
+    public event Action crossEndLine;
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Reach");
+            crossEndLine.Invoke();
         }
     }
 }
