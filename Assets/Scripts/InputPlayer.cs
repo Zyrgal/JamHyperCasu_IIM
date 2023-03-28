@@ -36,6 +36,7 @@ public class InputPlayer : MonoBehaviour
     {
         if (Input.GetButtonUp("Fire1"))
         {
+            Debug.Log("test");
             rb.velocity = Vector3.zero;
             //Debug.Log("playerIsMoving = false");
             playerIsMoving = false;
@@ -51,6 +52,7 @@ public class InputPlayer : MonoBehaviour
 
         if (Input.GetButton("Fire1"))
         {
+            Debug.Log("test2");
             rb.velocity = transform.forward * speed * Time.deltaTime;
 
             if (!playerIsMoving)

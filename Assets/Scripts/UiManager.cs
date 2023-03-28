@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class UiManager : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class UiManager : MonoBehaviour
     GameObject winPanel;
     [SerializeField]
     GameObject losePanel;
+    public event Action gameLaunch;
+    [SerializeField]
+    private GameObject menuStart;
 
     private void Start()
     {
@@ -20,6 +24,12 @@ public class UiManager : MonoBehaviour
         finishLine.crossEndLine += OnPlayerWin;
         player.playerDied += OnPlayerLose;
         //finishLine.crossEndLine += OnPlayerLose;
+    }
+
+    public void Ui_LaunchGame()
+    {
+        gameLaunch.Invoke();
+        menuStart.SetActive(false);
     }
 
     private void OnPlayerWin()

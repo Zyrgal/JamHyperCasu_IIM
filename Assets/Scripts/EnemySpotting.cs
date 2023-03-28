@@ -15,6 +15,9 @@ public class EnemySpotting : MonoBehaviour
     InputPlayer player;
 
     [SerializeField]
+    UiManager uimanager;
+
+    [SerializeField]
     bool canKill = true;
 
     bool canSpotMovement;
@@ -24,7 +27,13 @@ public class EnemySpotting : MonoBehaviour
 
     public void Start()
     {
-        
+        uimanager.gameLaunch += CallEnumerator;
+    }
+
+    public void CallEnumerator()
+    {
+        StartCoroutine(RunTheGame());
+        uimanager.gameLaunch -= CallEnumerator;
     }
 
     public IEnumerator RunTheGame()
