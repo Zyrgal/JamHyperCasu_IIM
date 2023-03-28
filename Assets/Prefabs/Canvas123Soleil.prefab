@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 169201443941341641}
   - component: {fileID: 169201443941341640}
   m_Layer: 5
-  m_Name: 123Soleil
+  m_Name: Canvas123Soleil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
