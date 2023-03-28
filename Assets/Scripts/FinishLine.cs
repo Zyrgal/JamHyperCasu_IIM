@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class FinishLine : MonoBehaviour
 {
-
     public event Action crossEndLine;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            crossEndLine.Invoke();
+            crossEndLine?.Invoke();
         }
     }
 }
