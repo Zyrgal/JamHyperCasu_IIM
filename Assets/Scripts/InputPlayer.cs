@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InputPlayer : MonoBehaviour
 {
     [SerializeField]
-    float speed = 1f;
+    float speed = 4f;
 
     [SerializeField]
     Camera camera;
@@ -16,6 +17,8 @@ public class InputPlayer : MonoBehaviour
     bool isDead = false;
     bool canMove = true;
     bool playerIsMoving = false;
+
+    private FinishLine finishLine;
 
     public event Action playerDied;
 
@@ -27,6 +30,9 @@ public class InputPlayer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerDied += OnPlayerDeath;
+
+        finishLine = GameObject.FindObjectOfType<FinishLine>();
+        finishLine.crossEndLine += onPlayerWin;
     }
 
     private void Update()
@@ -75,6 +81,12 @@ public class InputPlayer : MonoBehaviour
         Debug.Log("Dead");
     }
 
+    private void onPlayerWin()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
+    
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.collider.CompareTag("Ground"))
