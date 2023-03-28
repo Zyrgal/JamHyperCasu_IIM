@@ -9,9 +9,6 @@ public class InputPlayer : MonoBehaviour
     [SerializeField]
     float speed = 4f;
 
-    [SerializeField]
-    Camera camera;
-
     Rigidbody rb;
 
     bool isDead = false;
@@ -32,7 +29,7 @@ public class InputPlayer : MonoBehaviour
         playerDied += OnPlayerDeath;
 
         finishLine = GameObject.FindObjectOfType<FinishLine>();
-        finishLine.crossEndLine += onPlayerWin;
+        //finishLine.crossEndLine += onPlayerWin;
     }
 
     private void Update()
@@ -40,7 +37,7 @@ public class InputPlayer : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         {
             rb.velocity = Vector3.zero;
-            Debug.Log("playerIsMoving = false");
+            //Debug.Log("playerIsMoving = false");
             playerIsMoving = false;
         }
     }
@@ -55,11 +52,10 @@ public class InputPlayer : MonoBehaviour
         if (Input.GetButton("Fire1"))
         {
             rb.velocity = transform.forward * speed * Time.deltaTime;
-            //camera.transform.position += transform.forward * speed * Time.deltaTime;
 
             if (!playerIsMoving)
             {
-                Debug.Log("playerIsMoving = true");
+                //Debug.Log("playerIsMoving = true");
                 playerIsMoving = true;
             }
 
@@ -81,11 +77,11 @@ public class InputPlayer : MonoBehaviour
         Debug.Log("Dead");
     }
 
-    private void onPlayerWin()
+    /*private void onPlayerWin()
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
-    }
+    }*/
     
     private void OnCollisionEnter(Collision collision)
     {

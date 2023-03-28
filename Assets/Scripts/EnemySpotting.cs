@@ -17,29 +17,48 @@ public class EnemySpotting : MonoBehaviour
     [SerializeField]
     bool canKill = true;
 
-    public event Action turnBack;
-    public event Action beginCount;
+    bool canSpotMovement;
 
-    private void Start()
+    public event Action turnBack;
+    public event Action<float> beginCount;
+
+    public void Start()
     {
-        StartCoroutine(TurningBehaviour());
+        
+    }
+
+    public IEnumerator RunTheGame()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        yield return TurningBehaviour();
+    }
+
+    private void Update()
+    {
+        if (canKill && canSpotMovement)
+        {
+            player.CheckIfPlayerDie();
+        }
     }
 
     private IEnumerator TurningBehaviour()
     {
-        beginCount.Invoke();
-        yield return new WaitForSeconds(waitForTurn);
-
-        if (canKill)
+        while (true) //Stop quand win/lose (stopcoroutine?)
         {
-            player.CheckIfPlayerDie();
+            float randomDelaySun = UnityEngine.Random.Range(0.1f, 0.8f);
+            beginCount?.Invoke(randomDelaySun);
+            yield return new WaitForSeconds(2 + randomDelaySun);
+
+            canSpotMovement = true;
+
+            float randomSpotDuration = UnityEngine.Random.Range(0.4f, 0.7f);
+            yield return new WaitForSeconds(randomSpotDuration);
+            canSpotMovement = false;
+            turnBack.Invoke();
+
+            float randomRecover = UnityEngine.Random.Range(0.4f, 0.7f);
+            yield return new WaitForSeconds(randomRecover);
         }
-
-        yield return new WaitForSeconds(turnTimer);
-        turnBack.Invoke();
-
-        float randomRecover = UnityEngine.Random.Range(0.7f, 1.2f);
-        yield return new WaitForSeconds(randomRecover);
-        StartCoroutine(TurningBehaviour());
     }
 }
