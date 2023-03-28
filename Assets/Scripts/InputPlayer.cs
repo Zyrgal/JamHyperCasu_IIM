@@ -49,7 +49,7 @@ public class InputPlayer : MonoBehaviour
         if (Input.GetButton("Fire1"))
         {
             rb.velocity = transform.forward * speed * Time.deltaTime;
-            camera.transform.position += transform.forward * speed * Time.deltaTime;
+            //camera.transform.position += transform.forward * speed * Time.deltaTime;
 
             if (!playerIsMoving)
             {
