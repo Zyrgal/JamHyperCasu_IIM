@@ -9,16 +9,16 @@ public class InputPlayer : MonoBehaviour
     [SerializeField]
     float speed = 4f;
 
-    [SerializeField]
-    Camera camera;
-
     Rigidbody rb;
 
     bool isDead = false;
-    bool canMove = true;
+    bool canMove = false;
     bool playerIsMoving = false;
 
     private FinishLine finishLine;
+
+    [SerializeField]
+    private UiManager uiManager;
 
     public event Action playerDied;
 
@@ -30,9 +30,13 @@ public class InputPlayer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerDied += OnPlayerDeath;
-
+        uiManager.gameLaunch += Initialization;
         finishLine = GameObject.FindObjectOfType<FinishLine>();
-        finishLine.crossEndLine += onPlayerWin;
+    }
+
+    private void Initialization()
+    {
+        canMove = true;
     }
 
     private void Update()
@@ -40,7 +44,7 @@ public class InputPlayer : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         {
             rb.velocity = Vector3.zero;
-            Debug.Log("playerIsMoving = false");
+            //Debug.Log("playerIsMoving = false");
             playerIsMoving = false;
         }
     }
@@ -55,11 +59,10 @@ public class InputPlayer : MonoBehaviour
         if (Input.GetButton("Fire1"))
         {
             rb.velocity = transform.forward * speed * Time.deltaTime;
-            //camera.transform.position += transform.forward * speed * Time.deltaTime;
 
             if (!playerIsMoving)
             {
-                Debug.Log("playerIsMoving = true");
+                //Debug.Log("playerIsMoving = true");
                 playerIsMoving = true;
             }
 
@@ -80,18 +83,12 @@ public class InputPlayer : MonoBehaviour
         IsDead = true;
         Debug.Log("Dead");
     }
-
-    private void onPlayerWin()
-    {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
-    }
     
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.collider.CompareTag("Ground"))
         {
-            //canMove = false;
+            canMove = false;
             Debug.Log("canMove = false");
         }
     }

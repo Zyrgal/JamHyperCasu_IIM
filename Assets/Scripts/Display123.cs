@@ -9,18 +9,22 @@ public class Display123 : MonoBehaviour
     GameObject[] sprite123;
 
     [SerializeField]
-    GameObject soleil;
+    GameObject sun;
 
     [SerializeField]
     EnemySpotting enemySpotting;
+
+    float delayForSun = 0;
+
     void Start()
     {
         enemySpotting.turnBack += OnTurnBack;
         enemySpotting.beginCount += Display;
     }
 
-    void Display()
+    void Display(float delaySun)
     {
+        delayForSun = delaySun;
         StartCoroutine(E_Display());
     }
 
@@ -31,15 +35,14 @@ public class Display123 : MonoBehaviour
         HideAndShow(1);
         yield return new WaitForSeconds(1f);
         HideAndShow(2);
-        float randomSoleil = Random.Range(0.1f, 0.8f);
-        yield return new WaitForSeconds(randomSoleil);
+        yield return new WaitForSeconds(delayForSun);
         sprite123[2].SetActive(false);
-        soleil.SetActive(true);
+        sun.SetActive(true);
     }
 
     void OnTurnBack()
     {
-        soleil.SetActive(false);
+        sun.SetActive(false);
     }
 
     void HideAndShow(int numberToDisplay)

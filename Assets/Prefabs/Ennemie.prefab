@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3630399428037782091}
   - component: {fileID: 3630399428037782090}
   - component: {fileID: 3630399428037782094}
-  - component: {fileID: 3630399428037782095}
   m_Layer: 0
   m_Name: Ennemie
   m_TagString: Untagged
@@ -115,21 +114,3 @@ MonoBehaviour:
   turnTimer: 2
   player: {fileID: 0}
   canKill: 1
---- !u!114 &3630399428037782095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3630399428037782196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45b430a1c5d024d4f84c913499737172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite123:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  soleil: {fileID: 0}
-  enemySpotting: {fileID: 3630399428037782094}

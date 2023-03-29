@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 169201443941341646}
   - component: {fileID: 169201443941341641}
   - component: {fileID: 169201443941341640}
+  - component: {fileID: 6689402771661036755}
   m_Layer: 5
   m_Name: Canvas123Soleil
   m_TagString: Untagged
@@ -180,6 +181,24 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6689402771661036755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169201443941341643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b430a1c5d024d4f84c913499737172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite123:
+  - {fileID: 169201445243273746}
+  - {fileID: 169201444522508901}
+  - {fileID: 169201443900325559}
+  sun: {fileID: 169201445326738725}
+  enemySpotting: {fileID: 0}
 --- !u!1 &169201444522508901
 GameObject:
   m_ObjectHideFlags: 0
