@@ -13,6 +13,12 @@ public class Display123 : MonoBehaviour
 
     [SerializeField]
     EnemySpotting enemySpotting;
+    [SerializeField]
+    private FinishLine finishLine;
+    [SerializeField]
+    InputPlayer player;
+
+    Coroutine displayCoroutine;
 
     float delayForSun = 0;
 
@@ -20,12 +26,25 @@ public class Display123 : MonoBehaviour
     {
         enemySpotting.turnBack += OnTurnBack;
         enemySpotting.beginCount += Display;
+        finishLine.crossEndLine += OnPlayerWin;
+        player.playerDied += OnPlayerLose;
     }
 
     void Display(float delaySun)
     {
         delayForSun = delaySun;
-        StartCoroutine(E_Display());
+        displayCoroutine = StartCoroutine(E_Display());
+    }
+
+    void OnPlayerLose()
+    {
+        Debug.Log("Stop Coroutine");
+        StopCoroutine(displayCoroutine);
+    }
+
+    void OnPlayerWin()
+    {
+        StopCoroutine(displayCoroutine);
     }
 
     IEnumerator E_Display()
