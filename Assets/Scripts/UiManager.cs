@@ -6,6 +6,7 @@ using System;
 
 public class UiManager : MonoBehaviour
 {
+    [SerializeField]
     private FinishLine finishLine;
     InputPlayer player;
 
@@ -17,13 +18,12 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     private GameObject menuStart;
 
-    private void Start()
+    private void Awake()
     {
-        finishLine = GameObject.FindObjectOfType<FinishLine>();
+        //finishLine = GameObject.FindObjectOfType<FinishLine>();
         player = GameObject.Find("Player").GetComponent<InputPlayer>();
         finishLine.crossEndLine += OnPlayerWin;
         player.playerDied += OnPlayerLose;
-        //finishLine.crossEndLine += OnPlayerLose;
     }
 
     public void Ui_LaunchGame()
@@ -32,7 +32,7 @@ public class UiManager : MonoBehaviour
         menuStart.SetActive(false);
     }
 
-    private void OnPlayerWin()
+    public void OnPlayerWin()
     {
         winPanel.SetActive(true);
     }
@@ -42,7 +42,7 @@ public class UiManager : MonoBehaviour
         losePanel.SetActive(true);
     }
 
-    public void ReloadScene()
+    public void UI_ReloadScene()
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
