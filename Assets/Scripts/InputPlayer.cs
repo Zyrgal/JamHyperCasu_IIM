@@ -12,10 +12,13 @@ public class InputPlayer : MonoBehaviour
     Rigidbody rb;
 
     bool isDead = false;
-    bool canMove = true;
+    bool canMove = false;
     bool playerIsMoving = false;
 
     private FinishLine finishLine;
+
+    [SerializeField]
+    private UiManager uiManager;
 
     public event Action playerDied;
 
@@ -27,16 +30,19 @@ public class InputPlayer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerDied += OnPlayerDeath;
-
+        uiManager.gameLaunch += Initialization;
         finishLine = GameObject.FindObjectOfType<FinishLine>();
-        //finishLine.crossEndLine += onPlayerWin;
+    }
+
+    private void Initialization()
+    {
+        canMove = true;
     }
 
     private void Update()
     {
         if (Input.GetButtonUp("Fire1"))
         {
-            Debug.Log("test");
             rb.velocity = Vector3.zero;
             //Debug.Log("playerIsMoving = false");
             playerIsMoving = false;
@@ -52,7 +58,6 @@ public class InputPlayer : MonoBehaviour
 
         if (Input.GetButton("Fire1"))
         {
-            Debug.Log("test2");
             rb.velocity = transform.forward * speed * Time.deltaTime;
 
             if (!playerIsMoving)
@@ -78,18 +83,12 @@ public class InputPlayer : MonoBehaviour
         IsDead = true;
         Debug.Log("Dead");
     }
-
-    /*private void onPlayerWin()
-    {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
-    }*/
     
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.collider.CompareTag("Ground"))
         {
-            //canMove = false;
+            canMove = false;
             Debug.Log("canMove = false");
         }
     }
