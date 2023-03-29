@@ -16,10 +16,13 @@ public class EnemySpotting : MonoBehaviour
 
     [SerializeField]
     UiManager uimanager;
+    [SerializeField]
+    private FinishLine finishLine;
 
     [SerializeField]
     bool canKill = true;
 
+    Coroutine turningCoroutine;
     bool canSpotMovement;
 
     public event Action turnBack;
@@ -28,11 +31,23 @@ public class EnemySpotting : MonoBehaviour
     public void Start()
     {
         uimanager.gameLaunch += CallEnumerator;
+        finishLine.crossEndLine += OnPlayerWin;
+        player.playerDied += OnPlayerLose;
+    }
+
+    void OnPlayerWin()
+    {
+        StopCoroutine(turningCoroutine);
+    }
+
+    void OnPlayerLose()
+    {
+        StopCoroutine(turningCoroutine);
     }
 
     public void CallEnumerator()
     {
-        StartCoroutine(RunTheGame());
+        turningCoroutine = StartCoroutine(RunTheGame());
         uimanager.gameLaunch -= CallEnumerator;
     }
 
