@@ -21,6 +21,7 @@ public class InputPlayer : MonoBehaviour
     private UiManager uiManager;
 
     public event Action playerDied;
+    public event Action isRevive;
 
     public bool PlayerIsMoving { get => playerIsMoving; }
     public bool IsDead { /*get => isDead;*/ set => isDead = value; }
@@ -32,6 +33,7 @@ public class InputPlayer : MonoBehaviour
         playerDied += OnPlayerDeath;
         uiManager.gameLaunch += Initialization;
         finishLine = GameObject.FindObjectOfType<FinishLine>();
+        finishLine.crossEndLine += OnPlayerWin;
     }
 
     private void Initialization()
@@ -70,6 +72,11 @@ public class InputPlayer : MonoBehaviour
         }
     }
 
+    private void OnPlayerWin()
+    {
+        canMove = false;
+    }
+
     public void CheckIfPlayerDie()
     {
         if (PlayerIsMoving)
@@ -81,7 +88,13 @@ public class InputPlayer : MonoBehaviour
     private void OnPlayerDeath()
     {
         IsDead = true;
-        Debug.Log("Dead");
+    }
+
+    public void Revive()
+    {
+        IsDead = false;
+        canMove = true;
+        isRevive.Invoke();
     }
     
     private void OnCollisionEnter(Collision collision)

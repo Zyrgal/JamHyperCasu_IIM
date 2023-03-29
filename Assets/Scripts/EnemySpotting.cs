@@ -83,7 +83,7 @@ public class EnemySpotting : MonoBehaviour
         {
             float randomDelaySun = UnityEngine.Random.Range(0.1f, 0.8f);
             beginCount?.Invoke(randomDelaySun);
-            yield return new WaitForSeconds(2 + randomDelaySun);
+            yield return new WaitForSeconds(2 + randomDelaySun + 0.1f);
 
             canSpotMovement = true;
 
