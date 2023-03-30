@@ -16,7 +16,6 @@ public class EndGameGenerator : MonoBehaviour
     [SerializeField]
     AdsManager adsManager;
     
-    //bool canSpotMovement;
     
     public GameObject enemyPrefab;
     // Start is called before the first frame update
@@ -26,7 +25,6 @@ public class EndGameGenerator : MonoBehaviour
         EnemySpotting tempScript = enemySpotting.GetComponent<EnemySpotting>();
         tempScript.Player1 = player;
         tempScript.Uimanager1 = uimanager;
-        //tempScript.CanSpotMovement1 = canSpotMovement;
         display123.EnemySpotting1 = tempScript;
         display123.FinishLine1 = tempScript.FinishLine1;
         tempScript.FinishLine1 = tempScript.FinishLine1;

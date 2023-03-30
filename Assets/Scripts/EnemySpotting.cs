@@ -25,13 +25,12 @@ public class EnemySpotting : MonoBehaviour
     Display123 displayScript;
     [SerializeField]
     AdsManager adsManager;
-    
-
-    [SerializeField]
-    bool canKill = true;
 
     Coroutine turningCoroutine;
     bool canSpotMovement;
+    
+    [SerializeField] 
+    bool canKill = true;
     
     public InputPlayer Player1 { get => player; set => player = value; }
 

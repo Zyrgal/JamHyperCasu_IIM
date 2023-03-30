@@ -8,7 +8,7 @@ public class UiManager : MonoBehaviour
 {
     [SerializeField]
     private FinishLine finishLine;
-
+    
     public FinishLine FinishLine1 { get => finishLine; set => finishLine = value; }
 
     InputPlayer player;
