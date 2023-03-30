@@ -12,10 +12,7 @@ public class EndGameGenerator : MonoBehaviour
     
     [SerializeField]
     private Display123 display123;
-    
-    Coroutine turningCoroutine;
-    bool canSpotMovement;
-    
+
     public GameObject enemyPrefab;
     // Start is called before the first frame update
     void Awake()
@@ -25,7 +22,6 @@ public class EndGameGenerator : MonoBehaviour
         EnemySpotting tempScript = enemySpotting.GetComponent<EnemySpotting>();
         tempScript.Player1 = player;
         tempScript.Uimanager1 = uimanager;
-        tempScript.CanSpotMovement1 = canSpotMovement;
         display123.EnemySpotting1 = tempScript;
         display123.FinishLine1 = tempScript.FinishLine1;
         uimanager.FinishLine1 = tempScript.FinishLine1;
