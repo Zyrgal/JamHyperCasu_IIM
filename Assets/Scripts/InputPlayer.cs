@@ -8,6 +8,8 @@ public class InputPlayer : MonoBehaviour
 {
     [SerializeField]
     float speed = 4f;
+    
+    public float Speed { get => speed; set => speed = value; }
 
     Rigidbody rb;
 
@@ -96,7 +98,7 @@ public class InputPlayer : MonoBehaviour
         canMove = true;
         isRevive.Invoke();
     }
-    
+
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.collider.CompareTag("Ground"))
