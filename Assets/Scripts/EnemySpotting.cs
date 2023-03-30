@@ -43,6 +43,8 @@ public class EnemySpotting : MonoBehaviour
     // public Coroutine TurningCoroutine1 { get => turningCoroutine; set => turningCoroutine = value; }
 
     public bool CanSpotMovement1 { get => canSpotMovement; set => canSpotMovement = value; }
+    public Display123 DisplayScript { get => displayScript; set => displayScript = value; }
+    public AdsManager AdsManager { get => adsManager; set => adsManager = value; }
 
     public event Action turnBack;
     public event Action<float> beginCount;
