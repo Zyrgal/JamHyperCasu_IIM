@@ -8,7 +8,7 @@ public class UiManager : MonoBehaviour
 {
     [SerializeField]
     private FinishLine finishLine;
-    
+
     public FinishLine FinishLine1 { get => finishLine; set => finishLine = value; }
 
     InputPlayer player;
@@ -18,7 +18,7 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     GameObject losePanel;
     [SerializeField]
-    AdsManager adsManager;
+    RewardedAdsButton rewardedAdsButton;
     public event Action gameLaunch;
     [SerializeField]
     private GameObject menuStart;
@@ -27,10 +27,10 @@ public class UiManager : MonoBehaviour
     {
         //finishLine = GameObject.FindObjectOfType<FinishLine>();
         player = GameObject.Find("Player").GetComponent<InputPlayer>();
-        adsManager = GameObject.Find("AdsManager").GetComponent<AdsManager>();
+        //rewardedAdsButton = GameObject.Find("RewardedAdsButton").GetComponent<RewardedAdsButton>();
         finishLine.crossEndLine += OnPlayerWin;
         player.playerDied += OnPlayerLose;
-        adsManager.rewardWatched += HideLoseMenu;
+        rewardedAdsButton.rewardWatched += HideLoseMenu;
     }
 
     private void HideLoseMenu()

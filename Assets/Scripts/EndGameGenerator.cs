@@ -14,7 +14,7 @@ public class EndGameGenerator : MonoBehaviour
     private Display123 display123;
 
     [SerializeField]
-    AdsManager adsManager;
+    RewardedAdsButton rewardedAdsButton;
     
     
     public GameObject enemyPrefab;
@@ -29,7 +29,7 @@ public class EndGameGenerator : MonoBehaviour
         display123.FinishLine1 = tempScript.FinishLine1;
         tempScript.FinishLine1 = tempScript.FinishLine1;
         tempScript.DisplayScript = display123;
-        tempScript.AdsManager = adsManager;
+        tempScript.RewardedAdsButton = rewardedAdsButton;
         uimanager.FinishLine1 = tempScript.FinishLine1;
     }
 }

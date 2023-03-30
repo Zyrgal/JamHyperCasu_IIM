@@ -70,7 +70,7 @@ public class AdsManager : MonoBehaviour
     }
     #endregion
 
-    #region AddListener
+/*    #region AddListener
     class ADDListener : IUnityAdsListener
     {
         public void OnUnityAdsDidError(string message)
@@ -94,7 +94,7 @@ public class AdsManager : MonoBehaviour
         }
     }
     #endregion
-
+*/
 
     [SerializeField]
     GameObject LoseMenu;
@@ -108,7 +108,7 @@ public class AdsManager : MonoBehaviour
 
     AdListener adshowListener;
 
-    ADDListener aDDListener;
+    //ADDListener aDDListener;
 
     float tentatives;
 
@@ -139,7 +139,7 @@ public class AdsManager : MonoBehaviour
 
     public void RunRewardedAD()
     {
-        while (!Advertisement.IsReady("Rewarded_Android") || tentatives > 10f)
+        /*while (!Advertisement.IsReady("Rewarded_Android") || tentatives > 10f)
         {
             tentatives += Time.deltaTime;
             Debug.Log(tentatives);
@@ -150,7 +150,7 @@ public class AdsManager : MonoBehaviour
 
         Advertisement.Show("Rewarded_Android", adshowListener);
 
-
+*/
     }
 
     public void RunBannerAD()

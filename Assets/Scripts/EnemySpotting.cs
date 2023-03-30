@@ -6,12 +6,6 @@ using UnityEngine;
 public class EnemySpotting : MonoBehaviour
 {
     [SerializeField]
-    float waitForTurn = 3f;
-
-    [SerializeField]
-    float turnTimer = 1f;
-
-    [SerializeField]
     float permissiveDelay = 0.2f;
 
     [SerializeField]
@@ -24,7 +18,7 @@ public class EnemySpotting : MonoBehaviour
     [SerializeField]
     Display123 displayScript;
     [SerializeField]
-    AdsManager adsManager;
+    RewardedAdsButton rewardedAdsButton;
 
     Coroutine turningCoroutine;
     bool canSpotMovement;
@@ -43,7 +37,7 @@ public class EnemySpotting : MonoBehaviour
 
     public bool CanSpotMovement1 { get => canSpotMovement; set => canSpotMovement = value; }
     public Display123 DisplayScript { get => displayScript; set => displayScript = value; }
-    public AdsManager AdsManager { get => adsManager; set => adsManager = value; }
+    public RewardedAdsButton RewardedAdsButton { get => rewardedAdsButton; set => rewardedAdsButton = value; }
 
     public event Action turnBack;
     public event Action<float> beginCount;
@@ -54,7 +48,7 @@ public class EnemySpotting : MonoBehaviour
         finishLine.crossEndLine += OnPlayerWin;
         player.playerDied += OnPlayerLose;
         player.isRevive += RunCoroutineWait;
-        adsManager.watchingReward += StopTheCoroutines;
+        player.playerDied += StopTheCoroutines;
     }
 
     private void Update()
@@ -90,19 +84,16 @@ public class EnemySpotting : MonoBehaviour
 
     public void StopTheCoroutines()
     {
+        Debug.Log("stopCoroutine");
         canSpotMovement = false;
         displayScript.StopDisplayCoroutine();
         StopCoroutine(turningCoroutine);
     }
 
-    public void StartTheCoroutines()
-    {
-        StartCoroutine(TurningBehaviour());
-    }
-
     private void RunCoroutineWait()
     {
-        StartCoroutine(WaitAfterRevive());
+        StopCoroutine(turningCoroutine);
+        turningCoroutine = StartCoroutine(WaitAfterRevive());
     }
 
     private IEnumerator WaitAfterRevive()
