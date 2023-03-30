@@ -12,13 +12,24 @@ public class EnemySpotting : MonoBehaviour
     float turnTimer = 1f;
 
     [SerializeField]
+    float permissiveDelay = 0.2f;
+
+    [SerializeField]
     InputPlayer player;
 
     [SerializeField]
     UiManager uimanager;
     [SerializeField]
     private FinishLine finishLine;
+    [SerializeField]
+    Display123 displayScript;
+    [SerializeField]
+    AdsManager adsManager;
     
+
+    [SerializeField]
+    bool canKill = true;
+
     Coroutine turningCoroutine;
     bool canSpotMovement;
     
@@ -28,6 +39,10 @@ public class EnemySpotting : MonoBehaviour
 
     public FinishLine FinishLine1
     { get => finishLine; set => finishLine = value; }
+file:///C:/Users/Valud/Desktop/___/JamHyperCasu_IIM/Assets/Scripts/UiManager.cs
+file:///C:/Users/Valud/Desktop/___/JamHyperCasu_IIM/Assets/Scripts/Display123.cs
+file:///C:/Users/Valud/Desktop/___/JamHyperCasu_IIM/Assets/Scripts/EnemySpotting.cs
+file:///C:/Users/Valud/Desktop/___/JamHyperCasu_IIM/Assets/Scripts/InputPlayer.cs
 
     // public Coroutine TurningCoroutine1 { get => turningCoroutine; set => turningCoroutine = value; }
 
@@ -44,6 +59,16 @@ public class EnemySpotting : MonoBehaviour
         uimanager.gameLaunch += CallEnumerator;
         finishLine.crossEndLine += OnPlayerWin;
         player.playerDied += OnPlayerLose;
+        player.isRevive += RunCoroutineWait;
+        adsManager.watchingReward += StopTheCoroutines;
+    }
+
+    private void Update()
+    {
+        if (canKill && canSpotMovement)
+        {
+            player.CheckIfPlayerDie();
+        }
     }
 
     void OnPlayerWin()
@@ -59,7 +84,7 @@ public class EnemySpotting : MonoBehaviour
     public void CallEnumerator()
     {
         turningCoroutine = StartCoroutine(RunTheGame());
-        uimanager.gameLaunch -= CallEnumerator;
+        //uimanager.gameLaunch -= CallEnumerator;
     }
 
     public IEnumerator RunTheGame()
@@ -69,12 +94,27 @@ public class EnemySpotting : MonoBehaviour
         yield return TurningBehaviour();
     }
 
-    private void Update()
+    public void StopTheCoroutines()
     {
-        if (canKill && canSpotMovement)
-        {
-            player.CheckIfPlayerDie();
-        }
+        canSpotMovement = false;
+        displayScript.StopDisplayCoroutine();
+        StopCoroutine(turningCoroutine);
+    }
+
+    public void StartTheCoroutines()
+    {
+        StartCoroutine(TurningBehaviour());
+    }
+
+    private void RunCoroutineWait()
+    {
+        StartCoroutine(WaitAfterRevive());
+    }
+
+    private IEnumerator WaitAfterRevive()
+    {
+        yield return new WaitForSeconds(1f);
+        CallEnumerator();
     }
 
     private IEnumerator TurningBehaviour()
@@ -83,7 +123,7 @@ public class EnemySpotting : MonoBehaviour
         {
             float randomDelaySun = UnityEngine.Random.Range(0.1f, 0.8f);
             beginCount?.Invoke(randomDelaySun);
-            yield return new WaitForSeconds(2 + randomDelaySun + 0.1f);
+            yield return new WaitForSeconds(2 + randomDelaySun + permissiveDelay);
 
             canSpotMovement = true;
 
