@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2015858186166974690}
+  - component: {fileID: 1093910978}
+  - component: {fileID: 1093910976}
   m_Layer: 0
   m_Name: Obstacles
   m_TagString: Untagged
@@ -31,3 +33,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1093910978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015858186166974693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cfe497f8ed6f78408e26753d82c0b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  uimanager: {fileID: 0}
+  display123: {fileID: 0}
+  adsManager: {fileID: 0}
+  enemyPrefab: {fileID: 3630399428037782196, guid: 7b4c54ffd9663884ca778117e146b93e, type: 3}
+--- !u!114 &1093910976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015858186166974693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bdd3ef517b68054eb246d0cd649cdac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTutorial: 0
+  wallPrefab: {fileID: 3653386995620824463, guid: 7ab80f0d9a839d7419a4fc96012e870a, type: 3}
+  boostItemPrefab: {fileID: 3196172294261231710, guid: 38875d1fb1d73254497ac9a0f1c606f6, type: 3}
+  meshList: []
