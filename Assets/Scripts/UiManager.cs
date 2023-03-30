@@ -9,9 +9,6 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     private FinishLine finishLine;
     
-    [SerializeField]
-    AdsManager adsManager;
-    
     public FinishLine FinishLine1 { get => finishLine; set => finishLine = value; }
 
     InputPlayer player;
@@ -20,6 +17,8 @@ public class UiManager : MonoBehaviour
     GameObject winPanel;
     [SerializeField]
     GameObject losePanel;
+    [SerializeField]
+    AdsManager adsManager;
     public event Action gameLaunch;
     [SerializeField]
     private GameObject menuStart;

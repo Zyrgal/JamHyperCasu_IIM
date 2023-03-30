@@ -32,13 +32,14 @@ public class Display123 : MonoBehaviour
 
     void Start()
     {
+        adsManager = GameObject.Find("AdsManager").GetComponent<AdsManager>();
+        player = GameObject.Find("Player").GetComponent<InputPlayer>();
+
         enemySpotting.turnBack += OnTurnBack;
         enemySpotting.beginCount += StartDisplayCoroutine;
         finishLine.crossEndLine += OnPlayerWin;
         player.playerDied += OnPlayerLose;
         adsManager.watchingReward += OnWatchingReward;
-        player = GameObject.Find("Player").GetComponent<InputPlayer>();
-        adsManager = GameObject.Find("AdsManager").GetComponent<AdsManager>();
 
     }
 
@@ -65,7 +66,7 @@ public class Display123 : MonoBehaviour
 
     public void StopDisplayCoroutine()
     {
-        StopCoroutine(displayCoroutine);
+        //StopCoroutine(displayCoroutine);
     }
 
     IEnumerator E_Display()

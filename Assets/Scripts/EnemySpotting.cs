@@ -29,6 +29,9 @@ public class EnemySpotting : MonoBehaviour
     Coroutine turningCoroutine;
     bool canSpotMovement;
     
+    [SerializeField] 
+    bool canKill = true;
+    
     public InputPlayer Player1 { get => player; set => player = value; }
 
     public UiManager Uimanager1 { get => uimanager; set => uimanager = value; }
@@ -39,9 +42,8 @@ public class EnemySpotting : MonoBehaviour
     // public Coroutine TurningCoroutine1 { get => turningCoroutine; set => turningCoroutine = value; }
 
     public bool CanSpotMovement1 { get => canSpotMovement; set => canSpotMovement = value; }
-
-    [SerializeField]
-    bool canKill = true;
+    public Display123 DisplayScript { get => displayScript; set => displayScript = value; }
+    public AdsManager AdsManager { get => adsManager; set => adsManager = value; }
 
     public event Action turnBack;
     public event Action<float> beginCount;

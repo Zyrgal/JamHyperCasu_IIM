@@ -119,7 +119,7 @@ public class AdsManager : MonoBehaviour
 
     private void Start()
     {
-        LoseMenu = GameObject.Find("LoseMenu");
+        LoseMenu = GameObject.Find("Lose");
         AdForRewardMenu = GameObject.Find("AdForReward");
         player = GameObject.Find("Player").GetComponent<InputPlayer>();
         Advertisement.Initialize("5224737");
