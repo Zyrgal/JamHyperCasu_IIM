@@ -39,17 +39,10 @@ public class EnemySpotting : MonoBehaviour
 
     public FinishLine FinishLine1
     { get => finishLine; set => finishLine = value; }
-file:///C:/Users/Valud/Desktop/___/JamHyperCasu_IIM/Assets/Scripts/UiManager.cs
-file:///C:/Users/Valud/Desktop/___/JamHyperCasu_IIM/Assets/Scripts/Display123.cs
-file:///C:/Users/Valud/Desktop/___/JamHyperCasu_IIM/Assets/Scripts/EnemySpotting.cs
-file:///C:/Users/Valud/Desktop/___/JamHyperCasu_IIM/Assets/Scripts/InputPlayer.cs
 
     // public Coroutine TurningCoroutine1 { get => turningCoroutine; set => turningCoroutine = value; }
 
     public bool CanSpotMovement1 { get => canSpotMovement; set => canSpotMovement = value; }
-
-    [SerializeField]
-    bool canKill = true;
 
     public event Action turnBack;
     public event Action<float> beginCount;
