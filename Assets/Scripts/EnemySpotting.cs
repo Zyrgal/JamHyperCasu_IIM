@@ -18,12 +18,23 @@ public class EnemySpotting : MonoBehaviour
     UiManager uimanager;
     [SerializeField]
     private FinishLine finishLine;
+    
+    Coroutine turningCoroutine;
+    bool canSpotMovement;
+    
+    public InputPlayer Player1 { get => player; set => player = value; }
+
+    public UiManager Uimanager1 { get => uimanager; set => uimanager = value; }
+
+    public FinishLine FinishLine1
+    { get => finishLine; set => finishLine = value; }
+
+    // public Coroutine TurningCoroutine1 { get => turningCoroutine; set => turningCoroutine = value; }
+
+    public bool CanSpotMovement1 { get => canSpotMovement; set => canSpotMovement = value; }
 
     [SerializeField]
     bool canKill = true;
-
-    Coroutine turningCoroutine;
-    bool canSpotMovement;
 
     public event Action turnBack;
     public event Action<float> beginCount;
