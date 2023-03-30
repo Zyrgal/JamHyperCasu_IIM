@@ -18,6 +18,9 @@ public class ObstacleGenerator : MonoBehaviour
     public GameObject boostItemPrefab;
     private List<List<int>> wallLines = new List<List<int>>(); 
     private List<List<int>> itemsLines = new List<List<int>>(); 
+    
+    [Space]
+    public List<GameObject> preFabList;
 
     void Start()
     {
@@ -28,11 +31,18 @@ public class ObstacleGenerator : MonoBehaviour
         }
         else
         {
-            Instantiate(wallPrefab, new Vector3(0f, 0, (-17f + 9f)), Quaternion.identity, gameObject.transform);
+            wallPrefab = selectRandomWallGameObject();
+            Instantiate(wallPrefab, new Vector3(0f, -0.42f, (-17f + 9f)), Quaternion.identity, gameObject.transform);
             Instantiate(boostItemPrefab, new Vector3(0f, 0, (-17f + 18f)), Quaternion.identity, gameObject.transform);
         }
     }
 
+    private GameObject selectRandomWallGameObject()
+    {
+        float maxValue = preFabList.Count - 1;
+        return preFabList[(int)Mathf.Round(UnityEngine.Random.Range(0f, maxValue))];
+    }
+    
     private Tuple<int, List<int>> SetUpWallLine(int wallCount, List<int> oneLineWalls)
     {
         for (int j = 0; j < 3; j++)
@@ -126,7 +136,8 @@ public class ObstacleGenerator : MonoBehaviour
                         xPos = 0;
                         break;
                 }
-                Instantiate(wallPrefab, new Vector3(xPos, 0, (-17f + i * 9)), Quaternion.identity, gameObject.transform);
+                wallPrefab = selectRandomWallGameObject();
+                Instantiate(wallPrefab, new Vector3(xPos, -0.42f, (-17f + i * 9)), Quaternion.identity, gameObject.transform);
                 j++;
             }
             i++;

@@ -6229,7 +6229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTutorial: 1
   wallPrefab: {fileID: 3653386995620824463, guid: 7ab80f0d9a839d7419a4fc96012e870a, type: 3}
-  boostItemPrefab: {fileID: 5962810633984854934, guid: 79101cc8ab880d847a99ed9280d9028e, type: 3}
+  boostItemPrefab: {fileID: 3196172294261231710, guid: 38875d1fb1d73254497ac9a0f1c606f6, type: 3}
 --- !u!114 &1093910978
 MonoBehaviour:
   m_ObjectHideFlags: 0
