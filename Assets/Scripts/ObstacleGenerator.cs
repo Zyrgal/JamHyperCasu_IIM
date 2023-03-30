@@ -10,8 +10,10 @@ class EntityXPos
     public static float right = 1.7f;
 }
 
+
 public class ObstacleGenerator : MonoBehaviour
 {
+    public bool isTutorial = false;
     public GameObject wallPrefab;
     public GameObject boostItemPrefab;
     private List<List<int>> wallLines = new List<List<int>>(); 
@@ -19,8 +21,16 @@ public class ObstacleGenerator : MonoBehaviour
 
     void Start()
     {
-        BuildWallsMap();
-        BuildItemsMap();
+        if (!isTutorial)
+        {
+            BuildWallsMap();
+            BuildItemsMap();    
+        }
+        else
+        {
+            Instantiate(wallPrefab, new Vector3(0f, 0, (-17f + 9f)), Quaternion.identity, gameObject.transform);
+            Instantiate(boostItemPrefab, new Vector3(0f, 0, (-17f + 18f)), Quaternion.identity, gameObject.transform);
+        }
     }
 
     private Tuple<int, List<int>> SetUpWallLine(int wallCount, List<int> oneLineWalls)
