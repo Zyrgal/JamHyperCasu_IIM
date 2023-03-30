@@ -8653,7 +8653,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4269621150646538237, guid: 7eba3933334a2164ab9e1a01231f9903, type: 3}
       propertyPath: m_Name
-      value: InitializerAds (1)
+      value: InitializerAds
       objectReference: {fileID: 0}
     - target: {fileID: 4269621150646538239, guid: 7eba3933334a2164ab9e1a01231f9903, type: 3}
       propertyPath: m_RootOrder
