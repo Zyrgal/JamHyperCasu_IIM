@@ -17,6 +17,8 @@ public class Display123 : MonoBehaviour
     private FinishLine finishLine;
     [SerializeField]
     InputPlayer player;
+    [SerializeField]
+    AdsManager adsManager;
 
     Coroutine displayCoroutine;
 
@@ -25,12 +27,16 @@ public class Display123 : MonoBehaviour
     void Start()
     {
         enemySpotting.turnBack += OnTurnBack;
-        enemySpotting.beginCount += Display;
+        enemySpotting.beginCount += StartDisplayCoroutine;
         finishLine.crossEndLine += OnPlayerWin;
         player.playerDied += OnPlayerLose;
+        adsManager.watchingReward += OnWatchingReward;
+        player = GameObject.Find("Player").GetComponent<InputPlayer>();
+        adsManager = GameObject.Find("AdsManager").GetComponent<AdsManager>();
+
     }
 
-    void Display(float delaySun)
+    void StartDisplayCoroutine(float delaySun)
     {
         delayForSun = delaySun;
         displayCoroutine = StartCoroutine(E_Display());
@@ -38,11 +44,20 @@ public class Display123 : MonoBehaviour
 
     void OnPlayerLose()
     {
-        Debug.Log("Stop Coroutine");
-        StopCoroutine(displayCoroutine);
+        StopDisplayCoroutine();
     }
 
     void OnPlayerWin()
+    {
+        StopDisplayCoroutine();
+    }
+
+    private void OnWatchingReward()
+    {
+        sun.SetActive(false);
+    }
+
+    public void StopDisplayCoroutine()
     {
         StopCoroutine(displayCoroutine);
     }

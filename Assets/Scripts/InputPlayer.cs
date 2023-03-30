@@ -46,7 +46,6 @@ public class InputPlayer : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         {
             rb.velocity = Vector3.zero;
-            //Debug.Log("playerIsMoving = false");
             playerIsMoving = false;
         }
     }
@@ -64,7 +63,6 @@ public class InputPlayer : MonoBehaviour
 
             if (!playerIsMoving)
             {
-                //Debug.Log("playerIsMoving = true");
                 playerIsMoving = true;
             }
 
@@ -102,7 +100,6 @@ public class InputPlayer : MonoBehaviour
         if (!collision.collider.CompareTag("Ground"))
         {
             canMove = false;
-            Debug.Log("canMove = false");
         }
     }
 
@@ -111,7 +108,6 @@ public class InputPlayer : MonoBehaviour
         if (!collision.collider.CompareTag("Ground"))
         {
             canMove = true;
-            Debug.Log("canMove = true");
         }
     }
 }

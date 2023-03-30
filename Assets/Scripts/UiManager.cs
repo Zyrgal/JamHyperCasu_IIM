@@ -8,6 +8,8 @@ public class UiManager : MonoBehaviour
 {
     [SerializeField]
     private FinishLine finishLine;
+    [SerializeField]
+    AdsManager adsManager;
     InputPlayer player;
 
     [SerializeField]
@@ -22,8 +24,15 @@ public class UiManager : MonoBehaviour
     {
         //finishLine = GameObject.FindObjectOfType<FinishLine>();
         player = GameObject.Find("Player").GetComponent<InputPlayer>();
+        adsManager = GameObject.Find("AdsManager").GetComponent<AdsManager>();
         finishLine.crossEndLine += OnPlayerWin;
         player.playerDied += OnPlayerLose;
+        adsManager.rewardWatched += HideLoseMenu;
+    }
+
+    private void HideLoseMenu()
+    {
+        losePanel.SetActive(false);
     }
 
     public void Ui_LaunchGame()
