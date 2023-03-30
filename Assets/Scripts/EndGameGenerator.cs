@@ -20,6 +20,7 @@ public class EndGameGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Debug.Log("hello");
         GameObject enemySpotting = Instantiate(enemyPrefab, new Vector3(0, 0, (-17f + (7 + 1) * 9)), Quaternion.identity, gameObject.transform);
         EnemySpotting tempScript = enemySpotting.GetComponent<EnemySpotting>();
         tempScript.Player1 = player;

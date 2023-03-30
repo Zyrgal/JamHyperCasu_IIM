@@ -101,7 +101,7 @@ public class InputPlayer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.collider.CompareTag("Ground"))
+        if (collision.collider.CompareTag("Wall"))
         {
             canMove = false;
             Debug.Log("canMove = false");
@@ -110,7 +110,7 @@ public class InputPlayer : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (!collision.collider.CompareTag("Ground"))
+        if (collision.collider.CompareTag("Wall"))
         {
             canMove = true;
             Debug.Log("canMove = true");

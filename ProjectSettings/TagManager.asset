@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - BoostItem
+  - Wall
   layers:
   - Default
   - TransparentFX

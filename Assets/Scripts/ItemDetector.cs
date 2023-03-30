@@ -9,9 +9,8 @@ public class ItemDetector : MonoBehaviour
     {
         if (other.gameObject.CompareTag("BoostItem"))
         {
-            Debug.Log("hello");
             other.gameObject.SetActive(false);
-            player.GetComponent<InputPlayer>().Speed *= 2;
+            player.GetComponent<InputPlayer>().Speed *= 1.3f;
         }
     }
 }
