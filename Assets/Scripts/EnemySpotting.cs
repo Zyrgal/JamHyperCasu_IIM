@@ -25,12 +25,31 @@ public class EnemySpotting : MonoBehaviour
     Display123 displayScript;
     [SerializeField]
     AdsManager adsManager;
+    
 
     [SerializeField]
     bool canKill = true;
 
     Coroutine turningCoroutine;
     bool canSpotMovement;
+    
+    public InputPlayer Player1 { get => player; set => player = value; }
+
+    public UiManager Uimanager1 { get => uimanager; set => uimanager = value; }
+
+    public FinishLine FinishLine1
+    { get => finishLine; set => finishLine = value; }
+file:///C:/Users/Valud/Desktop/___/JamHyperCasu_IIM/Assets/Scripts/UiManager.cs
+file:///C:/Users/Valud/Desktop/___/JamHyperCasu_IIM/Assets/Scripts/Display123.cs
+file:///C:/Users/Valud/Desktop/___/JamHyperCasu_IIM/Assets/Scripts/EnemySpotting.cs
+file:///C:/Users/Valud/Desktop/___/JamHyperCasu_IIM/Assets/Scripts/InputPlayer.cs
+
+    // public Coroutine TurningCoroutine1 { get => turningCoroutine; set => turningCoroutine = value; }
+
+    public bool CanSpotMovement1 { get => canSpotMovement; set => canSpotMovement = value; }
+
+    [SerializeField]
+    bool canKill = true;
 
     public event Action turnBack;
     public event Action<float> beginCount;

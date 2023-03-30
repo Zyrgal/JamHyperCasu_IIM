@@ -8,8 +8,9 @@ public class UiManager : MonoBehaviour
 {
     [SerializeField]
     private FinishLine finishLine;
-    [SerializeField]
-    AdsManager adsManager;
+
+    public FinishLine FinishLine1 { get => finishLine; set => finishLine = value; }
+
     InputPlayer player;
 
     [SerializeField]
@@ -20,7 +21,7 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     private GameObject menuStart;
 
-    private void Awake()
+    private void Start()
     {
         //finishLine = GameObject.FindObjectOfType<FinishLine>();
         player = GameObject.Find("Player").GetComponent<InputPlayer>();

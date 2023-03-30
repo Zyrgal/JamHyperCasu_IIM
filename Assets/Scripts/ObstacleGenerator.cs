@@ -10,7 +10,7 @@ class wallXPos
     public static float right = 1.7f;
 }
 
-public class ObstacleManager : MonoBehaviour
+public class ObstacleGenerator : MonoBehaviour
 {
     public GameObject wallPrefab;
     private List<List<int>> wallLines = new List<List<int>>(); 
@@ -42,7 +42,6 @@ public class ObstacleManager : MonoBehaviour
         for (int j = 0; j < 3; j++)
         {
             int wallValue = (int)Mathf.Round(UnityEngine.Random.Range(0f, 1f));
-            Debug.Log(wallValue);
             if (wallValue == 1)
             {
                 if (wallCount < 2)

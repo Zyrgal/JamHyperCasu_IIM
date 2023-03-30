@@ -13,8 +13,14 @@ public class Display123 : MonoBehaviour
 
     [SerializeField]
     EnemySpotting enemySpotting;
+    
     [SerializeField]
     private FinishLine finishLine;
+
+    public EnemySpotting EnemySpotting1 { get => enemySpotting; set => enemySpotting = value; }
+
+    public FinishLine FinishLine1 { get => finishLine; set => finishLine = value; }
+
     [SerializeField]
     InputPlayer player;
     [SerializeField]
