@@ -25,6 +25,9 @@ public class InputPlayer : MonoBehaviour
     public event Action playerDied;
     public event Action isRevive;
 
+    [SerializeField]
+    Animator animator;
+
     public bool PlayerIsMoving { get => playerIsMoving; }
     public bool IsDead { /*get => isDead;*/ set => isDead = value; }
 
@@ -47,6 +50,8 @@ public class InputPlayer : MonoBehaviour
     {
         if (Input.GetButtonUp("Fire1"))
         {
+            //int temp Animator.StringToHash("IsWalking");
+            animator.SetBool("IsWalking", false);
             rb.velocity = Vector3.zero;
             playerIsMoving = false;
         }
@@ -61,6 +66,7 @@ public class InputPlayer : MonoBehaviour
 
         if (Input.GetButton("Fire1"))
         {
+            animator.SetBool("IsWalking", true);
             rb.velocity = transform.forward * speed * Time.deltaTime;
 
             if (!playerIsMoving)
@@ -74,6 +80,7 @@ public class InputPlayer : MonoBehaviour
 
     private void OnPlayerWin()
     {
+        animator.SetTrigger("Victory");
         canMove = false;
     }
 
@@ -87,11 +94,13 @@ public class InputPlayer : MonoBehaviour
 
     private void OnPlayerDeath()
     {
+        animator.SetTrigger("IsDead");
         IsDead = true;
     }
 
     public void Revive()
     {
+        animator.SetTrigger("Idle");
         IsDead = false;
         canMove = true;
         isRevive.Invoke();

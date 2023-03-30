@@ -17,6 +17,8 @@ public class UiManager : MonoBehaviour
     GameObject winPanel;
     [SerializeField]
     GameObject losePanel;
+    [SerializeField]
+    AdsManager adsManager;
     public event Action gameLaunch;
     [SerializeField]
     private GameObject menuStart;
