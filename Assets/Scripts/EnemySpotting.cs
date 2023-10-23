@@ -55,7 +55,7 @@ public class EnemySpotting : MonoBehaviour
     {
         if (canKill && canSpotMovement)
         {
-            player.CheckIfPlayerDie();
+            player.CheckIfTakeDamage();
         }
     }
 
@@ -84,7 +84,6 @@ public class EnemySpotting : MonoBehaviour
 
     public void StopTheCoroutines()
     {
-        Debug.Log("stopCoroutine");
         canSpotMovement = false;
         displayScript.StopDisplayCoroutine();
         StopCoroutine(turningCoroutine);

@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class InputPlayer : MonoBehaviour
 {
-    [SerializeField]
-    float speed = 4f;
-    
+    [SerializeField] float speed = 4f;
+    [SerializeField] int lifePoint = 2;
+
+    [SerializeField] List<GameObject> checkPoints;
+
     public float Speed { get => speed; set => speed = value; }
 
     Rigidbody rb;
@@ -16,6 +18,7 @@ public class InputPlayer : MonoBehaviour
     bool isDead = false;
     bool canMove = false;
     bool playerIsMoving = false;
+    bool isInvulnurable = false;
 
     private FinishLine finishLine;
 
@@ -55,6 +58,12 @@ public class InputPlayer : MonoBehaviour
             rb.velocity = Vector3.zero;
             playerIsMoving = false;
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("RollBack");
+            RollBack();
+        }
     }
 
     void FixedUpdate()
@@ -84,12 +93,35 @@ public class InputPlayer : MonoBehaviour
         canMove = false;
     }
 
-    public void CheckIfPlayerDie()
+    public void TakeDamage()
     {
-        if (PlayerIsMoving)
+        lifePoint--;
+
+        if (lifePoint <= 0)
         {
             playerDied.Invoke();
+            return;
         }
+
+        RollBack();
+        isInvulnurable = true;
+        StartCoroutine(InvulnerabilityFrame());
+    }
+
+    public void CheckIfTakeDamage()
+    {
+        if (!PlayerIsMoving || isInvulnurable)
+        {
+            return;
+        }
+
+        TakeDamage();
+    }
+
+    private IEnumerator InvulnerabilityFrame()
+    {
+        yield return new WaitForSeconds(1f);
+        isInvulnurable = false;
     }
 
     private void OnPlayerDeath()
@@ -104,6 +136,28 @@ public class InputPlayer : MonoBehaviour
         IsDead = false;
         canMove = true;
         isRevive.Invoke();
+    }
+
+    public void RollBack()
+    {
+        canMove = false;
+        playerIsMoving = false;
+        StartCoroutine(LerpPosition(gameObject.transform.position, checkPoints[0].transform.position, 2f));
+    }
+
+    public IEnumerator LerpPosition(Vector3 currentPosition, Vector3 targetPostion, float dur)
+    {
+        var startTime = Time.time;
+        transform.position = currentPosition;
+        while (startTime+dur > Time.time)
+        {
+            transform.position = Vector3.Lerp(currentPosition, targetPostion, (Time.time - startTime) / dur);
+            yield return null;
+
+        }
+        transform.position = targetPostion;
+        canMove = true;
+
     }
 
     private void OnCollisionEnter(Collision collision)
