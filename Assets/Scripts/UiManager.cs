@@ -23,14 +23,16 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     private GameObject menuStart;
 
+    [SerializeField] GameObject shopMenu;
+
     private void Start()
     {
-        //finishLine = GameObject.FindObjectOfType<FinishLine>();
+        //finishLine = FindObjectOfType<FinishLine>();
         player = GameObject.Find("Player").GetComponent<InputPlayer>();
         //rewardedAdsButton = GameObject.Find("RewardedAdsButton").GetComponent<RewardedAdsButton>();
         finishLine.crossEndLine += OnPlayerWin;
         player.playerDied += OnPlayerLose;
-        rewardedAdsButton.rewardWatched += HideLoseMenu;
+        player.isRevive += HideLoseMenu;
     }
 
     private void HideLoseMenu()
@@ -58,5 +60,10 @@ public class UiManager : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+    }
+
+    public void UI_DisplayShopMenu(bool activate)
+    {
+        shopMenu.SetActive(activate);
     }
 }

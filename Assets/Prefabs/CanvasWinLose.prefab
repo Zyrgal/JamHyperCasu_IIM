@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 6831609616049117736}
   - component: {fileID: 122885583094319506}
   - component: {fileID: 4628166159461769196}
-  - component: {fileID: 9024147093712152020}
+  - component: {fileID: 8826630058255487885}
   m_Layer: 5
   m_Name: RewardedAdsButton
   m_TagString: Untagged
@@ -425,7 +425,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9024147093712152020}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: RewardedAdsButton, Game
         m_MethodName: ShowAd
         m_Mode: 1
@@ -437,7 +437,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &9024147093712152020
+--- !u!114 &8826630058255487885
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -446,9 +446,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1709126661930338616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59433777ecf52ac4f9d2aaec01ea3992, type: 3}
+  m_Script: {fileID: 11500000, guid: ec81281ff94b11641b5290f473defd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _showAdButton: {fileID: 4628166159461769196}
+  _androidPlacementID: Rewarded_Android
+  _iOSAdUnitId: Rewarded_iOS
 --- !u!1 &3332490658553074259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,7 +1288,7 @@ GameObject:
   - component: {fileID: 3332490660193385941}
   - component: {fileID: 3332490660193385946}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasWinLose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -42,6 +42,7 @@ public class InputPlayer : MonoBehaviour
         uiManager.gameLaunch += Initialization;
         finishLine = GameObject.FindObjectOfType<FinishLine>();
         finishLine.crossEndLine += OnPlayerWin;
+        RewardedAdsButton.onRevive += Revive;
     }
 
     private void Initialization()
