@@ -85,8 +85,6 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
                 onHalloweenMapReward?.Invoke();
             }
 
-            Time.timeScale = 1;
-
             //player.Revive();
             // Load another ad:
             Advertisement.Load(_adUnitId, this);
@@ -95,11 +93,13 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         switch (showCompletionState)
         {
             case UnityAdsShowCompletionState.SKIPPED:
-                Debug.Log("skipped");
+                Time.timeScale = 1;
                 break;
             case UnityAdsShowCompletionState.COMPLETED:
+                Time.timeScale = 1;
                 break;
             case UnityAdsShowCompletionState.UNKNOWN:
+                Time.timeScale = 1;
                 break;
             default:
                 break;
