@@ -39,7 +39,7 @@ public class Display123 : MonoBehaviour
         enemySpotting.beginCount += StartDisplayCoroutine;
         finishLine.crossEndLine += OnPlayerWin;
         player.playerDied += OnPlayerLose;
-        rewardedAdsButton.watchingReward += OnWatchingReward;
+        RewardedAdsButton.watchingReward += OnWatchingReward;
 
     }
 

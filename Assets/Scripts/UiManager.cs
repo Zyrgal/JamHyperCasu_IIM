@@ -33,6 +33,7 @@ public class UiManager : MonoBehaviour
         finishLine.crossEndLine += OnPlayerWin;
         player.playerDied += OnPlayerLose;
         player.isRevive += HideLoseMenu;
+
     }
 
     private void HideLoseMenu()
@@ -48,6 +49,7 @@ public class UiManager : MonoBehaviour
 
     public void OnPlayerWin()
     {
+        Time.timeScale = 0;
         winPanel.SetActive(true);
     }
 
@@ -65,5 +67,6 @@ public class UiManager : MonoBehaviour
     public void UI_DisplayShopMenu(bool activate)
     {
         shopMenu.SetActive(activate);
+        menuStart.SetActive(!activate);
     }
 }
