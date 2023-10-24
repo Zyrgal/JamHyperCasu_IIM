@@ -8,7 +8,6 @@ public class InputPlayer : MonoBehaviour
 {
     [SerializeField] float speed = 4f;
     [SerializeField] int lifePoint = 2;
-
     [SerializeField] List<GameObject> checkPoints;
 
     public float Speed { get => speed; set => speed = value; }
@@ -143,7 +142,7 @@ public class InputPlayer : MonoBehaviour
     {
         canMove = false;
         playerIsMoving = false;
-        StartCoroutine(LerpPosition(gameObject.transform.position, checkPoints[0].transform.position, 2f));
+        StartCoroutine(LerpPosition(gameObject.transform.position, checkPoints[checkPoints.Count - 1].transform.position, 2f));
     }
 
     public IEnumerator LerpPosition(Vector3 currentPosition, Vector3 targetPostion, float dur)
@@ -161,8 +160,17 @@ public class InputPlayer : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Checkpoint"))
+        {
+            checkPoints.Add(other.gameObject);
+            Debug.Log("CHECKPOINT");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {        
         if (collision.collider.CompareTag("Wall"))
         {
             canMove = false;

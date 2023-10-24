@@ -13,11 +13,15 @@ class EntityXPos
 
 public class ObstacleGenerator : MonoBehaviour
 {
+    public int difficulty = 0;
+    
+    [Space]
     public bool isTutorial = false;
     public GameObject wallPrefab;
     public GameObject boostItemPrefab;
+    public GameObject checkpointPrefab;
     private List<List<int>> wallLines = new List<List<int>>(); 
-    private List<List<int>> itemsLines = new List<List<int>>(); 
+    private List<List<int>> itemsLines = new List<List<int>>();
     
     [Space]
     public List<GameObject> preFabList;
@@ -27,7 +31,7 @@ public class ObstacleGenerator : MonoBehaviour
         if (!isTutorial)
         {
             BuildWallsMap();
-            BuildItemsMap();    
+            BuildItemsMap();
         }
         else
         {
@@ -50,6 +54,11 @@ public class ObstacleGenerator : MonoBehaviour
             int wallValue = (int)Mathf.Round(UnityEngine.Random.Range(0f, 1f));
             if (wallValue == 1 && wallCount < 2)
             {
+                int isCheckPoint = (int)Mathf.Round(UnityEngine.Random.Range(0f, 3f));
+                if (isCheckPoint == 3)
+                {
+                    oneLineWalls.Add(3);
+                }
                 wallCount += 1;
                 oneLineWalls.Add(wallValue);
             }
@@ -73,7 +82,66 @@ public class ObstacleGenerator : MonoBehaviour
                 (wallCount, oneLineWalls) = SetUpWallLine(wallCount, oneLineWalls);
             }
 
+            if (difficulty != 0)
+            {
+                for (int j = 0; j < difficulty; j++)
+                {
+                    (wallCount, oneLineWalls) = SetUpWallLine(wallCount, oneLineWalls);
+                    if (wallCount == 2)
+                    {
+                        wallLines.Add(oneLineWalls);
+                        return;
+                    }
+                }
+                
+            }
             wallLines.Add(oneLineWalls);
+        }
+    }
+
+    private void BuildWalls() //Trump...
+    {
+        int i = 0;
+        foreach (List<int> line in wallLines)
+        {
+            int j = 0;
+            foreach (int wall in line)
+            {
+                if (wall == 0)
+                {
+                    j++;
+                    continue;
+                }
+                float xPos;
+                switch (j)
+                {
+                    case 0:
+                        xPos = EntityXPos.left;
+                        break;
+                    case 1:
+                        xPos = EntityXPos.center;
+                        break;
+                    case 2:
+                        xPos = EntityXPos.right;
+                        break;
+                    default:
+                        xPos = 0;
+                        break;
+                }
+
+                switch (wall)
+                {
+                    case 1:
+                        wallPrefab = selectRandomWallGameObject();
+                        Instantiate(wallPrefab, new Vector3(xPos, -0.42f, (-17f + i * 9)), Quaternion.identity, gameObject.transform);
+                        break;
+                    case 3:
+                        Instantiate(checkpointPrefab, new Vector3(xPos, -0.42f, (-17f + i * 9)), Quaternion.identity,
+                            gameObject.transform);
+                        break;
+                }
+            }
+            i++;
         }
     }
 
@@ -104,43 +172,6 @@ public class ObstacleGenerator : MonoBehaviour
             List<int> oneLineItems = new List<int>();
             oneLineItems = SetUpItemLine(oneLineItems);
             itemsLines.Add(oneLineItems);
-        }
-    }
-
-    private void BuildWalls() //Trump...
-    {
-        int i = 0;
-        foreach (var line in wallLines)
-        {
-            int j = 0;
-            foreach (var wall in line)
-            {
-                if (wall == 0)
-                {
-                    j++;
-                    continue;
-                }
-                float xPos;
-                switch (j)
-                {
-                    case 0:
-                        xPos = EntityXPos.left;
-                        break;
-                    case 1:
-                        xPos = EntityXPos.center;
-                        break;
-                    case 2:
-                        xPos = EntityXPos.right;
-                        break;
-                    default:
-                        xPos = 0;
-                        break;
-                }
-                wallPrefab = selectRandomWallGameObject();
-                Instantiate(wallPrefab, new Vector3(xPos, -0.42f, (-17f + i * 9)), Quaternion.identity, gameObject.transform);
-                j++;
-            }
-            i++;
         }
     }
 
