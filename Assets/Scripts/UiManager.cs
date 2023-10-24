@@ -33,7 +33,6 @@ public class UiManager : MonoBehaviour
         finishLine.crossEndLine += OnPlayerWin;
         player.playerDied += OnPlayerLose;
         player.isRevive += HideLoseMenu;
-
     }
 
     private void HideLoseMenu()
