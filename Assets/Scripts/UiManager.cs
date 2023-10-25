@@ -48,12 +48,12 @@ public class UiManager : MonoBehaviour
 
     public void OnPlayerWin()
     {
-        Time.timeScale = 0;
         winPanel.SetActive(true);
     }
 
     private void OnPlayerLose()
     {
+        gameObject.GetComponent<RewardedAdsButton>().ShowAd();
         losePanel.SetActive(true);
     }
 

@@ -1573,7 +1573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7247687161822298530}
   m_Layer: 0
-  m_Name: Halloween
+  m_Name: NormalMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5427377618423196446}
   - component: {fileID: 5427377618423196441}
+  - component: {fileID: 7042524232798243672}
   m_Layer: 0
   m_Name: UiManager
   m_TagString: Untagged
@@ -49,3 +50,16 @@ MonoBehaviour:
   losePanel: {fileID: 0}
   rewardedAdsButton: {fileID: 0}
   menuStart: {fileID: 0}
+  shopMenu: {fileID: 0}
+--- !u!114 &7042524232798243672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5427377618423196440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29cb4bc31b829e849a813331160a9818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
