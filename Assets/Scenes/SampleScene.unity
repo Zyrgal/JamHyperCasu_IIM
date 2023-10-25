@@ -341,8 +341,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160392892}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2725548, y: 0.000000014373708, z: -0.0000000040717802, w: 0.96214026}
-  m_LocalPosition: {x: -0.00000020639358, y: 7.280772, z: -27.707735}
+  m_LocalRotation: {x: 0.27255487, y: -0.000000014373593, z: 0.0000000040717487, w: 0.96214026}
+  m_LocalPosition: {x: 0.00000020639193, y: 7.2807727, z: -27.707737}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1145,7 +1145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814e26daec93b124ebfe95cde2beb56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 300
+  gold: 0
   havePayForHalloweenSkinCharacter: 0
   currentLevelSelected: 0
   currentCharacterSelected: 0
@@ -1384,8 +1384,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2725548, y: 0.000000014373708, z: -0.0000000040717802, w: 0.96214026}
-  m_LocalPosition: {x: -79.92963, y: -5.876315, z: 11.232061}
+  m_LocalRotation: {x: 0.27255487, y: -0.000000014373593, z: 0.0000000040717487, w: 0.96214026}
+  m_LocalPosition: {x: -79.92963, y: -5.8763146, z: 11.2320595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
