@@ -102,7 +102,7 @@ public class InputPlayer : MonoBehaviour
 
     public void TakeDamage()
     {
-        lifePoint--;
+        lifePoint--;        
 
         if (lifePoint <= 0)
         {
@@ -110,6 +110,8 @@ public class InputPlayer : MonoBehaviour
             return;
         }
 
+        uiManager.PlayerGetHit();
+        animator.SetTrigger("GetHit");
         RollBack();
         isInvulnurable = true;
         StartCoroutine(InvulnerabilityFrame());

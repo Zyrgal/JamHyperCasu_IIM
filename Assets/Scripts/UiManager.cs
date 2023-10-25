@@ -22,11 +22,14 @@ public class UiManager : MonoBehaviour
     [SerializeField] GameObject shopMenu;
     [SerializeField] GameObject characterMenu;
     [SerializeField] GameObject buttonToRemove;
+    [SerializeField] GameObject uiGame;
 
     public GameObject greenSquareBaseLevel;
     public GameObject greenSquareHalloweenLevel;
     public GameObject greenSquareBaseCharacter;
     public GameObject greenSquareHalloweenCharacter;
+
+    [SerializeField] List<GameObject> lifePoint;
 
     private void Start()
     {
@@ -59,6 +62,11 @@ public class UiManager : MonoBehaviour
         player.isRevive -= HideLoseMenu;
         finishLine.crossEndLine -= OnPlayerWin;
         RewardedAdsButton.onHalloweenMapReward -= HalloweenMapUnlock;
+    }
+
+    public void PlayerGetHit()
+    {
+        lifePoint[0].GetComponent<Image>().color = new Color(1,1,1,0.5f);
     }
 
     private void HalloweenMapUnlock()
@@ -98,12 +106,14 @@ public class UiManager : MonoBehaviour
     public void UI_DisplayShopMenu(bool activate)
     {
         shopMenu.SetActive(activate);
+        uiGame.SetActive(!activate);
         menuStart.SetActive(!activate);
     }
 
     public void UI_DisplayCharacterMenu(bool activate)
     {
         characterMenu.SetActive(activate);
+        uiGame.SetActive(!activate);
         menuStart.SetActive(!activate);
     }
 }
