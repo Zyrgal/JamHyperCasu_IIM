@@ -6,14 +6,6 @@ using UnityEngine.Advertisements;
 
 public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
 {
-
-    enum SmallEnum : byte
-    {
-        A,
-        B,
-        C
-    }
-
     [SerializeField] string _androidGameId;
     [SerializeField] string _iOSGameId;
     [SerializeField] bool _testMode = true;

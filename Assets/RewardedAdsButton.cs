@@ -18,6 +18,8 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     public event Action<string> rewardWatched;
     public static event Action watchingReward;
 
+    [SerializeField] bool isInterstitial = false;
+
     string _adUnitId = null; // This will remain null for unsupported platforms
 
     void Awake()
@@ -30,10 +32,10 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
 #endif
 
         //Advertisement.Initialize("5224737");
-        Advertisement.Load(_adUnitId, this);
+        //Advertisement.Load(_adUnitId, this);
         //Disable the button until the ad is ready to show:
         _showAdButton.interactable = false;
-        OnUnityAdsAdLoaded(_adUnitId);
+        LoadAd();
     }
 
     // Load content to the Ad Unit:
@@ -42,12 +44,14 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
         Debug.Log("Loading Ad: " + _adUnitId);
         Advertisement.Load(_adUnitId, this);
+        OnUnityAdsAdLoaded(_adUnitId);
     }
 
     // If the ad successfully loads, add a listener to the button and enable it:
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
-        Debug.Log("Ad Loaded: " + adUnitId,gameObject);
+        //Debug.Log("Ad Loaded: " + adUnitId,gameObject);
+        Debug.Log("this", gameObject);
 
         if (adUnitId.Equals(_adUnitId))
         {
@@ -67,6 +71,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         _showAdButton.interactable = false;
         // Then show the ad:
         Advertisement.Show(_adUnitId, this);
+        LoadAd();
     }
 
     // Implement the Show Listener's OnUnityAdsShowComplete callback method to determine if the user gets a reward:
@@ -87,7 +92,6 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
 
             //player.Revive();
             // Load another ad:
-            Advertisement.Load(_adUnitId, this);
         }
 
         switch (showCompletionState)

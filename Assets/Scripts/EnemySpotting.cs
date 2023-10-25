@@ -51,12 +51,34 @@ public class EnemySpotting : MonoBehaviour
         player.playerDied += StopTheCoroutines;
     }
 
+    private void OnDestroy()
+    {
+        uimanager.gameLaunch -= CallEnumerator;
+        finishLine.crossEndLine -= OnPlayerWin;
+        player.playerDied -= OnPlayerLose;
+        player.isRevive -= RunCoroutineWait;
+        player.playerDied -= StopTheCoroutines;
+    }
+
     private void Update()
     {
         if (canKill && canSpotMovement)
         {
             player.CheckIfTakeDamage();
         }
+    }
+
+    public void SetTarget(InputPlayer newTarget)
+    {
+        player.playerDied -= OnPlayerLose;
+        player.isRevive -= RunCoroutineWait;
+        player.playerDied -= StopTheCoroutines;
+
+        player = newTarget;
+
+        player.playerDied += OnPlayerLose;
+        player.isRevive += RunCoroutineWait;
+        player.playerDied += StopTheCoroutines;
     }
 
     void OnPlayerWin()

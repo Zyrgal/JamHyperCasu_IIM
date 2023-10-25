@@ -43,6 +43,13 @@ public class InputPlayer : MonoBehaviour
         finishLine.crossEndLine += OnPlayerWin;
         RewardedAdsButton.onRevive += Revive;
     }
+    private void OnDestroy()
+    {
+        RewardedAdsButton.onRevive -= Revive;
+        finishLine.crossEndLine -= OnPlayerWin;
+        uiManager.gameLaunch -= Initialization;
+        playerDied -= OnPlayerDeath;
+    }
 
     private void Initialization()
     {
@@ -135,14 +142,14 @@ public class InputPlayer : MonoBehaviour
         animator.SetTrigger("Idle");
         IsDead = false;
         canMove = true;
-        isRevive.Invoke();
+        isRevive?.Invoke();
     }
 
     public void RollBack()
     {
         canMove = false;
         playerIsMoving = false;
-        StartCoroutine(LerpPosition(gameObject.transform.position, checkPoints[checkPoints.Count - 1].transform.position, 2f));
+        StartCoroutine(LerpPosition(gameObject.transform.position, checkPoints[checkPoints.Count - 1].transform.position + new Vector3(0,0.15f,0), 1f));
     }
 
     public IEnumerator LerpPosition(Vector3 currentPosition, Vector3 targetPostion, float dur)

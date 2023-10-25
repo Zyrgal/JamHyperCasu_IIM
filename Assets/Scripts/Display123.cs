@@ -43,6 +43,25 @@ public class Display123 : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        enemySpotting.turnBack -= OnTurnBack;
+        enemySpotting.beginCount -= StartDisplayCoroutine;
+        finishLine.crossEndLine -= OnPlayerWin;
+        player.playerDied -= OnPlayerLose;
+        RewardedAdsButton.watchingReward -= OnWatchingReward;
+    }
+
+    public void SetTarget(InputPlayer newTarget)
+    {
+        player.playerDied -= OnPlayerLose;
+
+        player = newTarget;
+
+        player.playerDied += OnPlayerLose;
+
+    }
+
     void StartDisplayCoroutine(float delaySun)
     {
         delayForSun = delaySun;

@@ -12,6 +12,7 @@ public class FinishLine : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             crossEndLine?.Invoke();
+            ScoreManager.instance.IncrementeGold();
         }
     }
 }
