@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
 using System;
+using GameAnalyticsSDK;
 
 public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
@@ -84,10 +85,17 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
             if (_adUnitId == "Rewarded_Android")
             {
                 onRevive?.Invoke();
+                GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.RewardedVideo, "admob", _adUnitId);
             }
             else if (_adUnitId == "HalloweenMap")
             {
                 onHalloweenMapReward?.Invoke();
+                GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.RewardedVideo, "admob", _adUnitId);
+            }
+
+            if (_adUnitId == "Interstitial_Android")
+            {
+                GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "admob", _adUnitId);
             }
 
             //player.Revive();
