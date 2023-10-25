@@ -4,7 +4,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 
-public class GiveTextRef : MonoBehaviour
+public class GiveGoldTextRef : MonoBehaviour
 {
     void Start()
     {

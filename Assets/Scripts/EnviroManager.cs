@@ -48,7 +48,7 @@ public class EnviroManager : MonoBehaviour
         }
 
         enviroList[index].SetActive(true);
-        ScoreManager.instance.currentLevelSelected = index;
+        ScoreManager.instance.currentMapSelected = index;
 
         /*if (index == 0)
         {

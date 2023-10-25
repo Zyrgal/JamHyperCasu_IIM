@@ -7,7 +7,7 @@ public class GreenSquareSelectLevel : MonoBehaviour
     [SerializeField] bool isHalloween;
     void Start()
     {
-        if (ScoreManager.instance.currentLevelSelected == 0)
+        if (ScoreManager.instance.currentMapSelected == 0)
         {
             if (isHalloween) 
             {
@@ -18,7 +18,7 @@ public class GreenSquareSelectLevel : MonoBehaviour
                 gameObject.SetActive(true);
             }
         }
-        else if (ScoreManager.instance.currentLevelSelected == 1)
+        else if (ScoreManager.instance.currentMapSelected == 1)
         {
             if (isHalloween)
             {

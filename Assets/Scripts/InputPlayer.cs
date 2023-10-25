@@ -156,7 +156,7 @@ public class InputPlayer : MonoBehaviour
     {
         var startTime = Time.time;
         transform.position = currentPosition;
-        while (startTime+dur > Time.time)
+        while (startTime + dur > Time.time)
         {
             transform.position = Vector3.Lerp(currentPosition, targetPostion, (Time.time - startTime) / dur);
             yield return null;

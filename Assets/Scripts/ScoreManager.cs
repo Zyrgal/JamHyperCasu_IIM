@@ -16,11 +16,12 @@ public class ScoreManager : MonoBehaviour
     public int gold = 0;
     public bool havePayForHalloweenSkinCharacter;
 
-    public int currentLevelSelected = 0;
+    public int currentMapSelected = 0;
     public int currentCharacterSelected = 0;
-
-    FinishLine finishline;
+    public int currentLevel = 1;
+    
     TextMeshProUGUI goldText;
+    TextMeshProUGUI currentLevelText;
     public bool isGoldCoinActivate = true;
 
     public void Awake()
@@ -42,11 +43,23 @@ public class ScoreManager : MonoBehaviour
         goldText = newText;
         goldText.text = gold.ToString();
     }
+    public void SetCurrentLevelTextReference(TextMeshProUGUI newText)
+    {
+        currentLevelText = newText;
+        currentLevelText.text = "Level : " + currentLevel.ToString();
+    }
+
     public void IncrementeGold()
     {
         GameAnalytics.NewResourceEvent(0, "Gold", 100, "WinRun", "Gold");
         gold += 100;
         goldText.text = gold.ToString();
+    }
+
+    public void IncrementeLevelIndex()
+    {
+        currentLevel += 1;
+        currentLevelText.text = currentLevel.ToString();
     }
 
     public bool CanPay(int cost)

@@ -7,7 +7,7 @@ public class ActivateNormalMapAtStart : MonoBehaviour
     [SerializeField] bool isNormalLevel;
     void Start()
     {
-        if (ScoreManager.instance.currentLevelSelected == 0)
+        if (ScoreManager.instance.currentMapSelected == 0)
         {
             if (isNormalLevel)
             {
@@ -18,7 +18,7 @@ public class ActivateNormalMapAtStart : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-        else if (ScoreManager.instance.currentLevelSelected == 1)
+        else if (ScoreManager.instance.currentMapSelected == 1)
         {
             if (isNormalLevel)
             {
