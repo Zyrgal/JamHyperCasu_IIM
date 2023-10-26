@@ -54,10 +54,14 @@ public class ObstacleGenerator : MonoBehaviour
             int wallValue = (int)Mathf.Round(UnityEngine.Random.Range(0f, 1f));
             if (wallValue == 1 && wallCount < 2)
             {
-                int isCheckPoint = (int)Mathf.Round(UnityEngine.Random.Range(0f, 3f));
-                if (isCheckPoint == 3)
+                int isCheckPoint = (int)Mathf.Round(UnityEngine.Random.Range(0f, 10f));
+                if (isCheckPoint == 4)
                 {
+                    oneLineWalls.Clear();
+                    oneLineWalls.Add(0);
                     oneLineWalls.Add(3);
+                    oneLineWalls.Add(0);
+                    return Tuple.Create(2, oneLineWalls);
                 }
                 wallCount += 1;
                 oneLineWalls.Add(wallValue);
@@ -133,11 +137,22 @@ public class ObstacleGenerator : MonoBehaviour
                 {
                     case 1:
                         wallPrefab = selectRandomWallGameObject();
-                        Instantiate(wallPrefab, new Vector3(xPos, -0.42f, (-17f + i * 9)), Quaternion.identity, gameObject.transform);
+                        Instantiate(
+                            wallPrefab,
+                            new Vector3(xPos, -0.42f, (-17f + i * 9)),
+                            Quaternion.identity,
+                            gameObject.transform
+                        );
+                        j++;
                         break;
-                    case 3:
-                        Instantiate(checkpointPrefab, new Vector3(xPos, -0.42f, (-17f + i * 9)), Quaternion.identity,
-                            gameObject.transform);
+                    case 3: 
+                        Instantiate(
+                            checkpointPrefab,
+                            new Vector3(xPos, -0.60f, (-17f + i * 9)),
+                            Quaternion.identity,
+                            gameObject.transform
+                        );
+                        j++;
                         break;
                 }
             }

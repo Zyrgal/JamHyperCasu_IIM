@@ -113,7 +113,6 @@ public class UiManager : MonoBehaviour
     public void UI_DisplayCharacterMenu(bool activate)
     {
         characterMenu.SetActive(activate);
-        uiGame.SetActive(!activate);
         menuStart.SetActive(!activate);
     }
 }

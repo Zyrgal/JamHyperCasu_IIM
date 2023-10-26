@@ -4,14 +4,15 @@ using UnityEngine;
 using System;
 using TMPro;
 using GameAnalyticsSDK;
-
-
+using UnityEngine.Rendering;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     public int gold = 0;
+
     public bool havePayForHalloweenSkinCharacter;
+    public bool haveWatchAdForHalloweenMap;
 
     public int currentMapSelected = 0;
     public int currentCharacterSelected = 0;
@@ -33,6 +34,12 @@ public class ScoreManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+
+    }
+
+    public void Start()
+    {
+        GameAnalytics.Initialize();
     }
 
     public void SetGoldTextReference(TextMeshProUGUI newText)
@@ -57,6 +64,11 @@ public class ScoreManager : MonoBehaviour
     {
         currentLevel += 1;
         currentLevelText.text = currentLevel.ToString();
+    }
+
+    public void HaveWatchHalloweenMapAd()
+    {
+        haveWatchAdForHalloweenMap = true;
     }
 
     public bool CanPay(int cost)
