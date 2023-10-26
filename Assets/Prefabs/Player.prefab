@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 5291999149783674454}
   - component: {fileID: 7062061336426467074}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: TriggerBoost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
