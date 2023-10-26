@@ -151,7 +151,8 @@ public class InputPlayer : MonoBehaviour
     {
         canMove = false;
         playerIsMoving = false;
-        StartCoroutine(LerpPosition(gameObject.transform.position, checkPoints[checkPoints.Count - 1].transform.position + new Vector3(0,0.15f,0), 1f));
+        Vector3 pos = checkPoints[checkPoints.Count - 1].transform.position;
+        StartCoroutine(LerpPosition(gameObject.transform.position, new Vector3(pos.x, 0f, pos.z), 2f));
     }
 
     public IEnumerator LerpPosition(Vector3 currentPosition, Vector3 targetPostion, float dur)
