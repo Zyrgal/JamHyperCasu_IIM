@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
-using Codice.Client.BaseCommands;
 using GameAnalyticsSDK;
-using Codice.Client.BaseCommands.Merge.Xml;
-using static Codice.Client.Common.Servers.RecentlyUsedServers;
-using static Codice.CM.Common.CmCallContext;
+
 
 
 public class ScoreManager : MonoBehaviour
