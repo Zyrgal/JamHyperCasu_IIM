@@ -316,8 +316,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160392892}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27255487, y: -0.000000014373593, z: 0.0000000040717487, w: 0.96214026}
-  m_LocalPosition: {x: 0.00000020639193, y: 7.2807727, z: -27.707737}
+  m_LocalRotation: {x: 0.2725548, y: 0.000000014373708, z: -0.0000000040717802, w: 0.96214026}
+  m_LocalPosition: {x: -0.00000020639358, y: 7.280772, z: -27.707735}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -559,6 +559,8 @@ MonoBehaviour:
   display123: {fileID: 676465821}
   enemySpotting: {fileID: 0}
   uiManager: {fileID: 1440846522}
+  lightBaseLevel: {fileID: 705507993}
+  lightHalloweenLevel: {fileID: 487922420599382249}
 --- !u!114 &676465821 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6689402771661036755, guid: d2b7e6bdf01ca874ba58c417d6fadd5e, type: 3}
@@ -1078,8 +1080,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27255487, y: -0.000000014373593, z: 0.0000000040717487, w: 0.96214026}
-  m_LocalPosition: {x: -79.92963, y: -5.8763146, z: 11.2320595}
+  m_LocalRotation: {x: 0.2725548, y: 0.000000014373708, z: -0.0000000040717802, w: 0.96214026}
+  m_LocalPosition: {x: -79.92963, y: -5.876315, z: 11.232061}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1492,6 +1494,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4269621150646538224, guid: 7eba3933334a2164ab9e1a01231f9903, type: 3}
+      propertyPath: _testMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4269621150646538237, guid: 7eba3933334a2164ab9e1a01231f9903, type: 3}
       propertyPath: m_Name
       value: InitializerAds
@@ -1860,6 +1866,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 164fd069b57e7d742aa28e8cc9f3f025, type: 2}
+    - target: {fileID: 1215888428400309387, guid: 9ed016b389b8f77488f37274ebba1d08, type: 3}
+      propertyPath: m_Intensity
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1410128555124549419, guid: 9ed016b389b8f77488f37274ebba1d08, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1948,6 +1958,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 164fd069b57e7d742aa28e8cc9f3f025, type: 2}
+    - target: {fileID: 2512567639995694627, guid: 9ed016b389b8f77488f37274ebba1d08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2522751625476770733, guid: 9ed016b389b8f77488f37274ebba1d08, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2426,7 +2440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8567890181926345885, guid: 9ed016b389b8f77488f37274ebba1d08, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8574707824221491393, guid: 9ed016b389b8f77488f37274ebba1d08, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2944,6 +2958,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 5427377617632140196}
+    - target: {fileID: 1066738276785531666, guid: 1f27eca9fcf76cd49a9e3b9fd5578a25, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7.199951
+      objectReference: {fileID: 0}
     - target: {fileID: 3332490658805634502, guid: 1f27eca9fcf76cd49a9e3b9fd5578a25, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3172,10 +3190,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterShop
       objectReference: {fileID: 0}
-    - target: {fileID: 4187014825507948050, guid: 8be08a70297431544b9e76e6bf8eb8d0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6783099499577209543, guid: 8be08a70297431544b9e76e6bf8eb8d0, type: 3}
       propertyPath: enviroManager
       value: 
@@ -3347,7 +3361,6 @@ MonoBehaviour:
   _showAdButton: {fileID: 5427377617632140198}
   _androidPlacementID: Interstitial_Android
   _iOSAdUnitId: Rewarded_iOS
-  isInterstitial: 0
 --- !u!114 &5427377617632140198
 MonoBehaviour:
   m_ObjectHideFlags: 0
