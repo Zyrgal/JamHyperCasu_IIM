@@ -18,6 +18,9 @@ public class EnviroManager : MonoBehaviour
     [SerializeField] EnemySpotting enemySpotting;
     [SerializeField] UiManager uiManager;
 
+    [SerializeField] GameObject lightBaseLevel;
+    [SerializeField] GameObject lightHalloweenLevel;
+
     public void Awake()
     {
         enemySpotting = FindObjectOfType<EnemySpotting>();
@@ -37,13 +40,17 @@ public class EnviroManager : MonoBehaviour
 
         if (index == 0)
         {
-            uiManager.greenSquareBaseLevel.SetActive(true);
-            uiManager.greenSquareHalloweenLevel.SetActive(false);
+            lightBaseLevel.SetActive(true);
+            lightHalloweenLevel.SetActive(false);
+            uiManager.greenSquareBaseLevel.GetComponent<Image>().enabled = true;
+            uiManager.greenSquareHalloweenLevel.GetComponent<Image>().enabled = false;
         }
         else if (index == 1)
         {
-            uiManager.greenSquareBaseLevel.SetActive(false);
-            uiManager.greenSquareHalloweenLevel.SetActive(true);
+            lightBaseLevel.SetActive(false);
+            lightHalloweenLevel.SetActive(true);
+            uiManager.greenSquareBaseLevel.GetComponent<Image>().enabled = false;
+            uiManager.greenSquareHalloweenLevel.GetComponent<Image>().enabled = true;
 
         }
 
@@ -73,8 +80,8 @@ public class EnviroManager : MonoBehaviour
         }
         enemySpotting.SetTarget(playerHalloween.GetComponent<InputPlayer>());
         uiManager.SetTarget(playerHalloween.GetComponent<InputPlayer>());
-        uiManager.greenSquareBaseCharacter.SetActive(false);
-        uiManager.greenSquareHalloweenCharacter.SetActive(true);
+        uiManager.greenSquareBaseCharacter.GetComponent<Image>().enabled = false;
+        uiManager.greenSquareHalloweenCharacter.GetComponent<Image>().enabled = true;
         ScoreManager.instance.currentCharacterSelected = 1;
     }
 
@@ -86,8 +93,8 @@ public class EnviroManager : MonoBehaviour
         display123.SetTarget(playerNormal.GetComponent<InputPlayer>());
         enemySpotting.SetTarget(playerNormal.GetComponent<InputPlayer>());
         uiManager.SetTarget(playerNormal.GetComponent<InputPlayer>());
-        uiManager.greenSquareBaseCharacter.SetActive(true);
-        uiManager.greenSquareHalloweenCharacter.SetActive(false);
+        uiManager.greenSquareBaseCharacter.GetComponent<Image>().enabled = true;
+        uiManager.greenSquareHalloweenCharacter.GetComponent<Image>().enabled = false;
         ScoreManager.instance.currentCharacterSelected = 0;
     }
 }

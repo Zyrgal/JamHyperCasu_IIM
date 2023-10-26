@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ActivateNormalMapAtStart : MonoBehaviour
 {
@@ -11,22 +12,22 @@ public class ActivateNormalMapAtStart : MonoBehaviour
         {
             if (isNormalLevel)
             {
-                gameObject.SetActive(true);
+                GetComponent<Image>().enabled = true;
             }
             else 
             {
-                gameObject.SetActive(false);
+                GetComponent<Image>().enabled = false;
             }
         }
         else if (ScoreManager.instance.currentMapSelected == 1)
         {
             if (isNormalLevel)
             {
-                gameObject.SetActive(false);
+                GetComponent<Image>().enabled = false;
             }
             else
             {
-                gameObject.SetActive(true);
+                GetComponent<Image>().enabled = true;
             }
         }
     }

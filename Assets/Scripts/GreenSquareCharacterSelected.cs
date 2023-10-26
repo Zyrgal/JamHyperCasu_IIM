@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GreenSquareCharacterSelected : MonoBehaviour
 {
@@ -11,22 +12,22 @@ public class GreenSquareCharacterSelected : MonoBehaviour
         {
             if (isHalloween)
             {
-                gameObject.SetActive(false);
+                GetComponent<Image>().enabled = false;
             }
             else
             {
-                gameObject.SetActive(true);
+                GetComponent<Image>().enabled = true;
             }
         }
         else if (ScoreManager.instance.currentCharacterSelected == 1)
         {
             if (isHalloween)
             {
-                gameObject.SetActive(true);
+                GetComponent<Image>().enabled = true;
             }
             else
             {
-                gameObject.SetActive(false);
+                GetComponent<Image>().enabled = false;
             }
         }
     }
