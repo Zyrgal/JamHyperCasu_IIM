@@ -12,22 +12,22 @@ public class ActivateNormalMapAtStart : MonoBehaviour
         {
             if (isNormalLevel)
             {
-                GetComponent<Image>().enabled = true;
+                gameObject.SetActive(true);
             }
             else 
             {
-                GetComponent<Image>().enabled = false;
+                gameObject.SetActive(false);
             }
         }
         else if (ScoreManager.instance.currentMapSelected == 1)
         {
             if (isNormalLevel)
             {
-                GetComponent<Image>().enabled = false;
+                gameObject.SetActive(false);
             }
             else
             {
-                GetComponent<Image>().enabled = true;
+                gameObject.SetActive(true);
             }
         }
     }
