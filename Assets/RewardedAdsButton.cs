@@ -19,8 +19,6 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     public event Action<string> rewardWatched;
     public static event Action watchingReward;
 
-    [SerializeField] bool isInterstitial = false;
-
     string _adUnitId = null; // This will remain null for unsupported platforms
 
     void Awake()

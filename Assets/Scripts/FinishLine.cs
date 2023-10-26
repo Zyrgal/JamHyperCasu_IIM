@@ -13,7 +13,6 @@ public class FinishLine : MonoBehaviour
         {
             crossEndLine?.Invoke();
             ScoreManager.instance.IncrementeGold();
-            ScoreManager.instance.IncrementeGold();
         }
     }
 }
