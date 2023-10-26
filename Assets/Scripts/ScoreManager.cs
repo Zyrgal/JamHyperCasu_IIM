@@ -86,5 +86,6 @@ public class ScoreManager : MonoBehaviour
     public void Pay(int cost)
     {
         gold -= cost;
+        goldText.text = gold.ToString();
     }
 }

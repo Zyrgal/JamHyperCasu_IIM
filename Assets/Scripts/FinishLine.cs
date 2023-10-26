@@ -19,6 +19,7 @@ public class FinishLine : MonoBehaviour
             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete , "Level_" + ScoreManager.instance.currentLevel, ScoreManager.instance.gold);
             ps.Play();
             ScoreManager.instance.IncrementeGold();
+            ScoreManager.instance.IncrementeLevelIndex();
         }
     }
 }
