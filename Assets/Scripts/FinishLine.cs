@@ -1,3 +1,5 @@
+using GameAnalyticsSDK.Events;
+using GameAnalyticsSDK;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +16,7 @@ public class FinishLine : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             crossEndLine?.Invoke();
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete , "Level_" + ScoreManager.instance.currentLevel, ScoreManager.instance.gold);
             ps.Play();
             ScoreManager.instance.IncrementeGold();
         }

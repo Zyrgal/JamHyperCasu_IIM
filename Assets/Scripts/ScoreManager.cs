@@ -4,8 +4,7 @@ using UnityEngine;
 using System;
 using TMPro;
 using GameAnalyticsSDK;
-
-
+using UnityEngine.Rendering;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -35,6 +34,12 @@ public class ScoreManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+
+    }
+
+    public void Start()
+    {
+        GameAnalytics.Initialize();
     }
 
     public void SetGoldTextReference(TextMeshProUGUI newText)
