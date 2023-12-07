@@ -19,6 +19,10 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     public event Action<string> rewardWatched;
     public static event Action watchingReward;
 
+    [SerializeField] private bool isGainingGold = false;
+    [SerializeField] private bool isGainingShield = false;
+    [SerializeField] private int goldAmount = 1000;
+
     string _adUnitId = null; // This will remain null for unsupported platforms
 
     void Awake()
@@ -41,7 +45,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     public void LoadAd()
     {
         // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
-        Debug.Log("Loading Ad: " + _adUnitId);
+        //Debug.Log("Loading Ad: " + _adUnitId);
         Advertisement.Load(_adUnitId, this);
         OnUnityAdsAdLoaded(_adUnitId);
     }
@@ -50,7 +54,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
         //Debug.Log("Ad Loaded: " + adUnitId,gameObject);
-        Debug.Log("this", gameObject);
+        //Debug.Log("this", gameObject);
 
         if (adUnitId.Equals(_adUnitId))
         {
@@ -82,8 +86,20 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
             rewardWatched?.Invoke(_adUnitId);
             if (_adUnitId == "Rewarded_Android")
             {
-                onRevive?.Invoke();
-                GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.RewardedVideo, "admob", _adUnitId);
+                if (isGainingGold)
+                {
+                    Debug.Log("this", gameObject);
+                    ScoreManager.instance.IncrementeGold(goldAmount);
+                }
+                else if (isGainingShield)
+                {
+                    ScoreManager.instance.IncrementeShield(1);
+                }
+                else
+                {
+                    onRevive?.Invoke();
+                    GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.RewardedVideo, "admob", _adUnitId);
+                }
             }
             else if (_adUnitId == "HalloweenMap")
             {

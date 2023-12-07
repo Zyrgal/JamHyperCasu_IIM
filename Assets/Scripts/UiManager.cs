@@ -19,8 +19,11 @@ public class UiManager : MonoBehaviour
     public event Action gameLaunch;
     [SerializeField] private GameObject menuStart;
 
-    [SerializeField] GameObject shopMenu;
+    [SerializeField] GameObject levelMenu;
     [SerializeField] GameObject characterMenu;
+    [SerializeField] GameObject shopMenu;
+    [SerializeField] GameObject currencyCanvas;
+    [SerializeField] GameObject panelCurrency;
     [SerializeField] GameObject buttonToRemove;
     [SerializeField] GameObject uiGame;
 
@@ -103,11 +106,31 @@ public class UiManager : MonoBehaviour
         SceneManager.LoadScene(scene.name);
     }
 
+    public void UI_DisplayLevelMenu(bool activate)
+    {
+        levelMenu.SetActive(activate);
+        uiGame.SetActive(!activate);
+        shopMenu.SetActive(!activate);
+        menuStart.SetActive(!activate);
+    }
+
     public void UI_DisplayShopMenu(bool activate)
     {
         shopMenu.SetActive(activate);
+        currencyCanvas.SetActive(activate);
+        levelMenu.SetActive(!activate);
         uiGame.SetActive(!activate);
         menuStart.SetActive(!activate);
+    }
+
+    public void UI_DisplayMainMenu(bool activate)
+    {
+        menuStart.SetActive(activate);
+        uiGame.SetActive(activate);
+
+        characterMenu.SetActive(!activate);
+        shopMenu.SetActive(!activate);
+        levelMenu.SetActive(!activate);
     }
 
     public void UI_DisplayCharacterMenu(bool activate)

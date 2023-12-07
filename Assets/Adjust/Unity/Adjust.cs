@@ -1183,7 +1183,7 @@ namespace com.adjust.sdk
         private static bool IsEditor()
         {
 #if UNITY_EDITOR
-            Debug.Log(errorMsgEditor);
+            //Debug.Log(errorMsgEditor);
             return true;
 #else
             return false;

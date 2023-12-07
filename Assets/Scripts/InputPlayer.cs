@@ -8,6 +8,7 @@ public class InputPlayer : MonoBehaviour
 {
     [SerializeField] float speed = 4f;
     [SerializeField] int lifePoint = 2;
+    [SerializeField] int shieldAmount = 0;
     [SerializeField] List<GameObject> checkPoints;
 
     public float Speed { get => speed; set => speed = value; }
@@ -102,6 +103,15 @@ public class InputPlayer : MonoBehaviour
 
     public void TakeDamage()
     {
+        if (ScoreManager.instance.shieldAmount > 0)
+        {
+            ScoreManager.instance.DecrementeShield();
+            animator.SetTrigger("GetHit");
+            isInvulnurable = true;
+            StartCoroutine(InvulnerabilityFrame());
+            return;
+        }
+
         lifePoint--;        
 
         if (lifePoint <= 0)

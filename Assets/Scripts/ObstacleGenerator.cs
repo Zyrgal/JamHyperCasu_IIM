@@ -168,7 +168,7 @@ public class ObstacleGenerator : MonoBehaviour
             int itemValue = (int)Mathf.Round(UnityEngine.Random.Range(0f, 4f));
             if (itemValue == 1 && itemCount == 0)
             {
-                Debug.Log(itemValue);
+                //Debug.Log(itemValue);
                 itemCount++;
                 oneLineItems.Add(1);
             }

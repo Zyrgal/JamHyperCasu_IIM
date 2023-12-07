@@ -73,6 +73,7 @@ MonoBehaviour:
   - WinRun
   ResourceCurrencies:
   - Gold
+  - Gems
   LastCreatedGamePlatform: -1
   Platforms: 0b000000
   CurrentInspectorState: 1
